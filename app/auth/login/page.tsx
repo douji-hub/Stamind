@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import LogInForm from "@/components/LogIn/LogInForm";
+import LogInForm from "@/components/Login/LogInForm";
 
 const page = () => {
   return (

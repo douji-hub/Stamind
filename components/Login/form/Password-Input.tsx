@@ -1,4 +1,4 @@
-import ForgotPassword from "@/components/LogIn/button/ForgotPasswordLInk";
+import ForgotPassword from "@/components/Login/button/ForgotPasswordLInk";
 
 const PasswordInputSection = ({ inputPassword, setInputPassword }) => {
   return (

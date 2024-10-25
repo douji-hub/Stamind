@@ -1,4 +1,4 @@
-import GoogleSigInButton from "@/components/LogIn/button/GoogleSignInButton";
+import GoogleSigInButton from "@/components/Login/button/GoogleSignInButton";
 
 const EmailInputSection = ({ inputEmail, setInputEmail, setIsRegister }) => {
   return (
