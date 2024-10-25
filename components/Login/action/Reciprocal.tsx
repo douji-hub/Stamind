@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 
 function Reciprocal() {
-  const [timeLeft, setTimeLeft] = useState(3);
-  const [isRegister, setIsRegister] = useState(false);
-  const [showMessage, setShowMessage] = useState(true);
+  const [timeLeft, setTimeLeft] = useState<number>(3);
+  const [isRegister, setIsRegister] = useState<boolean>(false);
+  const [showMessage, setShowMessage] = useState<boolean>(true);
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -19,7 +19,7 @@ function Reciprocal() {
     }
   }, [timeLeft]);
 
-  const formatTime = (time) => {
+  const formatTime = (time: number): string => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
