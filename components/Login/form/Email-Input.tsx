@@ -1,6 +1,11 @@
 import GoogleSigInButton from "@/components/LogIn/button/GoogleSignInButton";
+import { EmailInputSectionProps } from "@/interface/EmailInput";
 
-const EmailInputSection = ({ inputEmail, setInputEmail, setIsRegister }) => {
+const EmailInputSection = ({
+  inputEmail,
+  setInputEmail,
+  setIsRegister,
+}: EmailInputSectionProps) => {
   return (
     <div>
       <GoogleSigInButton />
