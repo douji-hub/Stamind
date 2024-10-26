@@ -29,34 +29,36 @@ function Reciprocal() {
   };
 
   return (
-    <div className="relative w-full">
+    <div className="w-full">
       <div
-        className={`mt-[1.5rem] text-center text-[4rem] transition-colors duration-500 ease-in-out ${
+        className={`mt-[2.8rem] mb-[0.7rem] text-center text-[4rem] transition-colors duration-500 ease-in-out ${
           isRegister ? "text-[#2C2D3C]" : "text-white"
         }`}
       >
         {formatTime(timeLeft)}
       </div>
 
-      {showMessage && (
+      <div className="relative h-[2.5rem]">
+        {showMessage && (
+          <div
+            className={`inset-0 transition-opacity duration-1000 ease-in-out ${
+              isRegister ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <div className="text-[0.9375rem] text-center text-[#fff]">
+              For security reasons, the link will expire in 10 minutes.
+            </div>
+          </div>
+        )}
+
         <div
-          className={`absolute top-[5.625rem] left-0 right-0 transition-opacity duration-1000 ease-in-out ${
-            isRegister ? "opacity-0" : "opacity-100"
+          className={`inset-0 transition-opacity delay-1000 duration-1000 ease-in-out ${
+            isRegister ? "opacity-100" : "opacity-0"
           }`}
         >
           <div className="text-[0.9375rem] text-center text-[#fff]">
-            For security reasons, the link will expire in 10 minutes.
+            Verification expired. Click below to resend the email.
           </div>
-        </div>
-      )}
-
-      <div
-        className={`absolute top-[5.625rem] left-0 right-0 transition-opacity delay-1000 duration-1000 ease-in-out ${
-          isRegister ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        <div className="text-[0.9375rem] text-center text-[#fff]">
-          Verification expired. Click below to resend the email.
         </div>
       </div>
     </div>
