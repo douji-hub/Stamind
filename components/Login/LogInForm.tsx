@@ -38,6 +38,7 @@ const LogInForm = () => {
         <PasswordInputSection
           inputPassword={inputPassword}
           setInputPassword={setInputPassword}
+          setIsRegister={setIsRegister}
         />
       </div>
     </div>
