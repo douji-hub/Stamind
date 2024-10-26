@@ -1,6 +1,10 @@
 import ForgotPassword from "@/components/LogIn/button/ForgotPasswordLInk";
+import { PasswordInputProps } from "@/interface/PasswordInput";
 
-const PasswordInputSection = ({ inputPassword, setInputPassword }) => {
+const PasswordInputSection = ({
+  inputPassword,
+  setInputPassword,
+}: PasswordInputProps) => {
   return (
     <div>
       <div>
