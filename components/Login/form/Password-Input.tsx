@@ -1,14 +1,10 @@
-import ForgotPassword from "@/components/Login/button/ForgotPasswordLink";
+import ForgotPassword from "@/components/LogIn/button/ForgotPasswordLInk";
+import { PasswordInputProps } from "@/interface/PasswordInput";
 
-interface IPasswordInputSection {
-  inputPassword: string;
-  setInputPassword: (password: string) => void;
-}
-
-const PasswordInputSection: React.FC<IPasswordInputSection> = ({
+const PasswordInputSection = ({
   inputPassword,
   setInputPassword,
-}) => {
+}: PasswordInputProps) => {
   return (
     <div>
       <div>
