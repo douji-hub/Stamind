@@ -8,10 +8,10 @@ interface IVerifyEmail {
 const page: React.FC<IVerifyEmail> = () => {
   return (
     <div>
-      <div className="text-[3rem] text-center font-bold text-stamind-lightgrey-stamind-white">
+      <div className="fixed top-[8rem] left-0 w-full text-[3rem] text-center font-bold text-lightgrey-stamind-white">
         Verify Your Email Address
       </div>
-      <div className="mt-[5rem] text-[0.9375rem] text-center text-stamind-lightgrey-stamind-white">
+      <div className="mt-[10rem] text-[0.9375rem] text-center text-lightgrey-stamind-white">
         A verification email has been sent to{" "}
         <span className="font-bold">ex***le@gmail.com</span>
         <br /> Please check your email and click the verification link to
