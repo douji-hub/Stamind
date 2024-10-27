@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { validatePassword, validateUsername } from '../utils/validation';
+import { validatePassword, validateUsername, validateEmail } from '../utils/validation';
 
 type Errors = {
     emptyEmail: boolean;
@@ -48,6 +48,14 @@ export const useForm = () => {
     useEffect(() => {
         setErrors((prevErrors) => ({
             ...prevErrors,
+            emptyEmail: !validateEmail(email),
+        }));
+    }, [email]);
+
+    // Monitor user name changes for verification
+    useEffect(() => {
+        setErrors((prevErrors) => ({
+            ...prevErrors,
             emptyUsername: !validateUsername(firstName),
         }));
     }, [firstName]);
@@ -64,6 +72,7 @@ export const useForm = () => {
 
     const isFormValid = () => {
         return (
+            !errors.emptyEmail &&
             !errors.emptyUsername &&
             errors.length &&
             errors.uppercase &&

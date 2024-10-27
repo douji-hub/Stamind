@@ -1,3 +1,7 @@
+export const validateEmail = (email: string): boolean => {
+    return email.trim() !== '';
+};
+
 export const validateUsername = (username: string): boolean => {
     return username.trim() !== '';
 };

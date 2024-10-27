@@ -29,7 +29,7 @@ const EmailField: React.FC<EmailFieldProps> = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`w-full h-[3rem] p-[0.5rem] bg-black-stamind-black-850 border rounded-md text-sm text-lightgrey-stamind-lightgrey-100 placeholder-grey-stamind-grey-300
+        className={`w-full h-[3rem] p-[0.5rem] bg-black-stamind-black-850 border focus:border-primary-stamind-blue-800 focus:outline-none rounded-md text-sm text-lightgrey-stamind-lightgrey-100 placeholder-grey-stamind-grey-300
           ${
             hasError
               ? "border-decoration-stamind-decoration-error-1"

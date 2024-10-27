@@ -67,8 +67,12 @@ const Page: React.FC = () => {
           placeholder="Enter your email"
           value={email}
           onChange={handleEmailChange}
-          hasError={hasTyped.email}
-          error={hasTyped.email ? "Email cannot be empty." : undefined}
+          hasError={hasTyped.email && errors.emptyEmail}
+          error={
+            hasTyped.email && errors.emptyEmail
+              ? "Email cannot be empty."
+              : undefined
+          }
         />
 
         <InputField
