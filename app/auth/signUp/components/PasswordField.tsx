@@ -4,6 +4,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 type PasswordInputProps = {
   label: string;
+  placeholder: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   showPassword: boolean;
@@ -15,6 +16,7 @@ type PasswordInputProps = {
 
 const PasswordInput: React.FC<PasswordInputProps> = ({
   label,
+  placeholder,
   value,
   onChange,
   showPassword,
@@ -32,11 +34,13 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
         type={showPassword ? "text" : "password"}
         value={value}
         onChange={onChange}
-        className={`w-full h-[3rem] p-[0.5rem] bg-black-stamind-black-850 border rounded-md text-sm text-lightgrey-stamind-lightgrey-100 ${
-          hasError
-            ? "border-decoration-stamind-decoration-error-1"
-            : "border-grey-stamind-grey-400"
-        }`}
+        placeholder={placeholder}
+        className={`w-full h-[3rem] p-[0.5rem] bg-black-stamind-black-850 border rounded-md text-sm text-lightgrey-stamind-lightgrey-100 placeholder-grey-stamind-grey-300
+          ${
+            hasError
+              ? "border-decoration-stamind-decoration-error-1"
+              : "border-grey-stamind-grey-400"
+          }`}
       />
       {showPassword ? (
         <VisibilityIcon

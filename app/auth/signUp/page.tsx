@@ -57,6 +57,7 @@ const Page: React.FC = () => {
 
         <InputField
           label="Your First Name"
+          placeholder="Enter your name"
           value={firstName}
           onChange={handleUsernameChange}
           hasError={hasTyped.firstName && errors.emptyUsername}
@@ -69,6 +70,7 @@ const Page: React.FC = () => {
 
         <PasswordField
           label="Password"
+          placeholder="Enter your password"
           value={password}
           onChange={handlePasswordChange}
           showPassword={showPassword}
@@ -115,6 +117,7 @@ const Page: React.FC = () => {
 
         <PasswordField
           label="Confirm Password"
+          placeholder="Enter your password again"
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
           showPassword={showConfirmPassword}

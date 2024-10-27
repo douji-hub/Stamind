@@ -2,6 +2,7 @@ import React from "react";
 
 type InputFieldProps = {
   label: string;
+  placeholder: string;
   type?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -11,6 +12,7 @@ type InputFieldProps = {
 
 const InputField: React.FC<InputFieldProps> = ({
   label,
+  placeholder,
   type = "text",
   value,
   onChange,
@@ -26,11 +28,13 @@ const InputField: React.FC<InputFieldProps> = ({
         type={type}
         value={value}
         onChange={onChange}
-        className={`w-full h-[3rem] p-[0.5rem] bg-black-stamind-black-850 border rounded-md text-sm text-lightgrey-stamind-lightgrey-100 ${
-          hasError
-            ? "border-decoration-stamind-decoration-error-1"
-            : "border-grey-stamind-grey-400"
-        }`}
+        placeholder={placeholder}
+        className={`w-full h-[3rem] p-[0.5rem] bg-black-stamind-black-850 border rounded-md text-sm text-lightgrey-stamind-lightgrey-100 placeholder-grey-stamind-grey-300
+          ${
+            hasError
+              ? "border-decoration-stamind-decoration-error-1"
+              : "border-grey-stamind-grey-400"
+          }`}
       />
       {error && (
         <p className="text-[0.7rem] mt-[0.6rem] text-decoration-stamind-decoration-error-1 text-xs">
