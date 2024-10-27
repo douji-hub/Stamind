@@ -34,6 +34,7 @@ export const useForm = () => {
 
     // error state
     const [errors, setErrors] = useState<Errors>({
+        emptyEmail: false,
         emptyUsername: false,
         length: false,
         uppercase: false,
