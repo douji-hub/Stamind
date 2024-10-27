@@ -6,7 +6,7 @@ const GoogleSignInButton = () => {
       <span>
         <Image src="/google-Icon.png" alt="logo" width={25} height={25}></Image>
       </span>
-      <p className="text-[1.25rem] font-bold">Continue with Google</p>
+      <p className="text-[1.25rem] font-normal">Continue with Google</p>
     </button>
   );
 };
