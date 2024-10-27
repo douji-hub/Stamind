@@ -151,11 +151,8 @@ const Page: React.FC = () => {
         />
 
         <button
-          className={`w-[6.8rem] h-[2.6rem] mt-2 py-2 px-4 ${
-            isFormValid()
-              ? "bg-primary-stamind-blue-1000"
-              : "bg-gray-400 cursor-not-allowed"
-          } text-white text-[0.85rem] font-light rounded`}
+          className={`w-[6.8rem] h-[2.6rem] mt-2 py-2 px-4 bg-primary-stamind-blue-1000 text-white text-[0.85rem] font-light rounded
+            ${isFormValid() ? "opacity-100" : "opacity-60"}`}
           disabled={!isFormValid()}
         >
           Get Started
