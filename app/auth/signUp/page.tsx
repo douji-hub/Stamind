@@ -4,6 +4,7 @@ import React from "react";
 import InputField from "./components/InputField";
 import PasswordField from "./components/PasswordField";
 import { useForm } from "./hooks/useForm";
+import GoogleSignInButton from "@/components/Login/button/GoogleSignInButton";
 
 const Page: React.FC = () => {
   const {
@@ -48,6 +49,12 @@ const Page: React.FC = () => {
         Join and start your journey
       </div>
       <div className="flex flex-col justify-center items-center mt-[8rem] gap-4">
+        <GoogleSignInButton />
+
+        <span className="text-[0.7rem] text-lightgrey-stamind-lightgrey-200">
+          or
+        </span>
+
         <InputField
           label="Your First Name"
           value={firstName}
