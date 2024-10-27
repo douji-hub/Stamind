@@ -1,11 +1,7 @@
 import React from "react";
 import Reciprocal from "@/components/Login/action/Reciprocal";
 
-interface IVerifyEmail {
-  email: string;
-}
-
-const page: React.FC<IVerifyEmail> = () => {
+const page = () => {
   return (
     <div>
       <div className="fixed top-[8rem] left-0 w-full text-[3rem] text-center font-bold text-lightgrey-stamind-white">
