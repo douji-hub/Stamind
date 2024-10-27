@@ -2,7 +2,7 @@ import React from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-type PasswordInputProps = {
+type PasswordFieldProps = {
   label: string;
   placeholder: string;
   value: string;
@@ -14,7 +14,7 @@ type PasswordInputProps = {
   children?: React.ReactNode;
 };
 
-const PasswordInput: React.FC<PasswordInputProps> = ({
+const PasswordField: React.FC<PasswordFieldProps> = ({
   label,
   placeholder,
   value,
@@ -65,4 +65,4 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
   </div>
 );
 
-export default PasswordInput;
+export default PasswordField;
