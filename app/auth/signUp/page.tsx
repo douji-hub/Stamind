@@ -5,6 +5,7 @@ import InputField from "./components/InputField";
 import PasswordField from "./components/PasswordField";
 import { useForm } from "./hooks/useForm";
 import GoogleSignInButton from "@/components/Login/button/GoogleSignInButton";
+import EmailField from "./components/EmailField";
 
 const Page: React.FC = () => {
   const {
@@ -16,8 +17,9 @@ const Page: React.FC = () => {
     isFormValid,
   } = useForm();
 
-  const { firstName, password, confirmPassword } = formValues;
-  const { setFirstName, setPassword, setConfirmPassword } = setFormValues;
+  const { email, firstName, password, confirmPassword } = formValues;
+  const { setEmail, setFirstName, setPassword, setConfirmPassword } =
+    setFormValues;
   const { hasTyped, setHasTyped } = typingStatus;
   const {
     showPassword,
@@ -25,6 +27,11 @@ const Page: React.FC = () => {
     showConfirmPassword,
     toggleShowConfirmPassword,
   } = passwordVisibility;
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    setHasTyped((prev) => ({ ...prev, email: true }));
+  };
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
@@ -45,7 +52,7 @@ const Page: React.FC = () => {
 
   return (
     <div>
-      <div className="fixed top-[8rem] left-0 w-full text-[3rem] text-center font-bold text-lightgrey-stamind-white">
+      <div className="fixed top-[4rem] left-0 w-full text-[3rem] text-center font-bold text-lightgrey-stamind-white">
         Join and start your journey
       </div>
       <div className="flex flex-col justify-center items-center mt-[8rem] gap-4">
@@ -54,6 +61,15 @@ const Page: React.FC = () => {
         <span className="text-[0.7rem] text-lightgrey-stamind-lightgrey-200">
           or
         </span>
+
+        <EmailField
+          label="Your Email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={handleEmailChange}
+          hasError={hasTyped.email}
+          error={hasTyped.email ? "Email cannot be empty." : undefined}
+        />
 
         <InputField
           label="Your First Name"

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { validatePassword, validateUsername } from '../utils/validation';
 
 type Errors = {
+    emptyEmail: boolean;
     emptyUsername: boolean;
     length: boolean;
     uppercase: boolean;
@@ -14,6 +15,7 @@ type Errors = {
 // Customized Hook, used to manage form status and validation logic
 export const useForm = () => {
     // input value state
+    const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -24,6 +26,7 @@ export const useForm = () => {
 
     // Whether the user has entered is used to control the display of error information.
     const [hasTyped, setHasTyped] = useState({
+        email: false,
         firstName: false,
         password: false,
         confirmPassword: false,
@@ -75,11 +78,13 @@ export const useForm = () => {
 
     return {
         formValues: {
+            email,
             firstName,
             password,
             confirmPassword,
         },
         setFormValues: {
+            setEmail,
             setFirstName,
             setPassword,
             setConfirmPassword,
