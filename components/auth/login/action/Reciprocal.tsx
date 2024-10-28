@@ -1,7 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ReciprocalProps, FormatTimeFunction } from "@/interface/Reciprocal";
+import {
+  ReciprocalProps,
+  FormatTimeFunction,
+} from "@/interface/auth/login/action/Reciprocal";
 
 function Reciprocal() {
   const [timeLeft, setTimeLeft] = useState<ReciprocalProps["timeLeft"]>(3);
