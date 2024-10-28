@@ -4,7 +4,7 @@ import React from "react";
 import InputField from "./components/InputField";
 import PasswordField from "./components/PasswordField";
 import { useForm } from "./hooks/useForm";
-import GoogleSignInButton from "@/components/Login/button/GoogleSignInButton";
+import GoogleSignInButton from "@/components/auth/login/button/GoogleSignInButton";
 import EmailField from "./components/EmailField";
 
 const Page: React.FC = () => {
@@ -148,7 +148,7 @@ const Page: React.FC = () => {
               ? "Passwords do not match. Please try again."
               : undefined
           }
-          customClass={'h-[5rem]'}
+          customClass={"h-[5rem]"}
         />
 
         <button
