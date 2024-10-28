@@ -19,7 +19,7 @@ const EmailField: React.FC<EmailFieldProps> = ({
   error,
   hasError = false,
 }) => (
-  <div className="flex flex-col h-[5.5rem]">
+  <div className="flex flex-col">
     <label className="text-[0.85rem] mb-[0.25rem] text-lightgrey-stamind-lightgrey-200">
       {label}
     </label>
