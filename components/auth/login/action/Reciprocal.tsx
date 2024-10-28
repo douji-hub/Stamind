@@ -1,25 +1,42 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import {
+  ReciprocalProps,
+  FormatTimeFunction,
+} from "@/interface/auth/login/action/Reciprocal";
 
 function Reciprocal() {
-  const [timeLeft, setTimeLeft] = useState<number>(3);
-  const [isRegister, setIsRegister] = useState<boolean>(false);
-  const [showMessage, setShowMessage] = useState<boolean>(true);
+  const [timeLeft, setTimeLeft] = useState<ReciprocalProps["timeLeft"]>(3);
+  const [isRegister, setIsRegister] =
+    useState<ReciprocalProps["isRegister"]>(false);
+  const [showMessage, setShowMessage] =
+    useState<ReciprocalProps["showMessage"]>(true);
+
+  //計時器
+  const startTimer = () => {
+    const timer = setInterval(() => {
+      setTimeLeft((prevTime: number) => prevTime - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  };
+
+  //處裡倒數結束
+  const handleTimeEnd = () => {
+    setIsRegister(true);
+    setTimeout(() => setShowMessage(false), 1000);
+  };
 
   useEffect(() => {
     if (timeLeft > 0) {
-      const timer = setInterval(() => {
-        setTimeLeft((prevTime) => prevTime - 1);
-      }, 1000);
-      return () => clearInterval(timer);
+      return startTimer();
     } else {
-      setIsRegister(true);
-      setTimeout(() => setShowMessage(false), 1000);
+      handleTimeEnd();
     }
   }, [timeLeft]);
 
-  const formatTime = (time: number): string => {
+  //轉換時間
+  const formatTime: FormatTimeFunction = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
