@@ -1,16 +1,11 @@
-import GoogleSigInButton from "@/components/Login/button/GoogleSignInButton";
+import GoogleSigInButton from "@/components/auth/login/button/GoogleSignInButton";
+import { EmailInputSectionProps } from "@/interface/auth/login/form/EmailInput";
 
-interface IEmailInputSection {
-  inputEmail: string;
-  setInputEmail: (email: string) => void;
-  setIsRegister: (value: boolean) => void;
-}
-
-const EmailInputSection: React.FC<IEmailInputSection> = ({
+const EmailInputSection = ({
   inputEmail,
   setInputEmail,
   setIsRegister,
-}) => {
+}: EmailInputSectionProps) => {
   return (
     <div>
       <GoogleSigInButton />
