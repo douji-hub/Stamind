@@ -11,6 +11,7 @@ type PasswordFieldProps = {
   toggleShowPassword: () => void;
   error?: string;
   hasError?: boolean;
+  customClass?: string;
   children?: React.ReactNode;
 };
 
@@ -23,9 +24,10 @@ const PasswordField: React.FC<PasswordFieldProps> = ({
   toggleShowPassword,
   error,
   hasError = false,
+  customClass,
   children,
 }) => (
-  <div className="flex flex-col">
+  <div className={`flex flex-col ${customClass}`}>
     <label className="text-[0.85rem] mb-[0.25rem] text-lightgrey-stamind-lightgrey-200">
       {label}
     </label>

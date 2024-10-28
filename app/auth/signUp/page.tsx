@@ -51,7 +51,7 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="h-[100%]">
       <div className="relative top-[4rem] left-0 w-full text-[3rem] text-center font-bold text-lightgrey-stamind-white">
         Join and start your journey
       </div>
@@ -148,6 +148,7 @@ const Page: React.FC = () => {
               ? "Passwords do not match. Please try again."
               : undefined
           }
+          customClass={'h-[5rem]'}
         />
 
         <button
