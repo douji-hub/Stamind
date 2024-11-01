@@ -6,8 +6,8 @@ import Reciprocal from "@/components/utils/Reciprocal";
 import ButtonComponent from "@/components/form/button/ButtonComponent";
 
 const page = () => {
-  function resendForgotPasswordEmail(){
-    alert('resend!')
+  function resendForgotPasswordEmail() {
+    alert("resend!");
   }
 
   return (
@@ -60,7 +60,7 @@ const page = () => {
           <ButtonComponent
             label={"Resend Password Reset Email"}
             onClick={resendForgotPasswordEmail}
-            customClass={'h-[2.2rem] text-xs bg-grey-stamind-grey-400'}
+            customClass={"h-[2.2rem] text-xs bg-grey-stamind-grey-400"}
           />
 >>>>>>> 6392f8b (feat: change using component to display)
 >>>>>>> 3c1c634 (feat: change using component to display)
