@@ -46,7 +46,7 @@ function Reciprocal() {
   return (
     <div className="w-full">
       <div
-        className={`mt-[2.8rem] mb-[0.7rem] text-center text-[4rem] transition-colors duration-500 ease-in-out ${
+        className={`mt-[2rem] mb-[0.7rem] text-center text-[4rem] transition-colors duration-500 ease-in-out ${
           isRegister ? "text-[#2C2D3C]" : "text-white"
         }`}
       >
