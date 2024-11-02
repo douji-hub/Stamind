@@ -1,8 +1,15 @@
+"use client";
+
 import React from "react";
 
-import Reciprocal from "@/components/auth/login/action/Reciprocal";
+import Reciprocal from "@/components/utils/Reciprocal";
+import ButtonComponent from "@/components/form/button/ButtonComponent";
 
 const page = () => {
+  function resendForgotPasswordEmail(){
+    alert('resend!')
+  }
+
   return (
     <div>
       <div className="text-[3rem] text-center font-bold text-[#fff]">
@@ -22,9 +29,11 @@ const page = () => {
           <br /> Make sure the email address you provided is correct.
         </div>
         <div className="flex justify-center items-center flex-1">
-          <button className="h-[2.2rem] w-[13.4rem] bg-[#393A4B] border text-[0.8125rem] rounded text-[#fff]">
-            Resend Password Reset Email
-          </button>
+          <ButtonComponent
+            label={"Resend Password Reset Email"}
+            onClick={resendForgotPasswordEmail}
+            customClass={'h-[2.2rem] text-xs bg-grey-stamind-grey-400'}
+          />
         </div>
       </div>
     </div>
