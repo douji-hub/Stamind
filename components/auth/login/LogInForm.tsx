@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import { useState } from "react";
 import EmailInputSection from "@/components/auth/login/form/Email-Input";
 import PasswordInputSection from "@/components/auth/login/form/Password-Input";
@@ -24,6 +26,15 @@ const LogInForm = () => {
           setInputEmail={setInputEmail}
           setIsRegister={setIsRegister}
         />
+        <div className="flex justify-center mt-[7.75rem] w-full ">
+          <p className="text-[13px] text-[#D2D3E0]">New here?&nbsp;</p>
+          <Link
+            className=" text-[13px] text-[#D2D3E0] underline"
+            href="/auth/signUp"
+          >
+            Sign up
+          </Link>
+        </div>
       </div>
 
       {/* Password Section */}
