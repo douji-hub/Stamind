@@ -1,10 +1,12 @@
-import type { Config } from "tailwindcss";
+import withMT from "@material-tailwind/react/utils/withMT";
 
-const config: Config = {
+module.exports = withMT({
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
+    "./@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -24,14 +26,14 @@ const config: Config = {
           'stamind-lightgrey-150': "#E0E1EC",
           'stamind-lightgrey-200': "#D2D3E0",
         },
-        grey:{
+        grey: {
           'stamind-grey-200': "#858699",
           'stamind-grey-300': "#4D4F69",
           'stamind-grey-400': "#393A4B",
           'stamind-grey-600': "#272832",
           'stamind-grey-800': "#313248",
         },
-        black:{
+        black: {
           'stamind-black-400': '#2C2D3C',
           'stamind-black-600': '#292A35',
           'stamind-black-800': "#191A23",
@@ -68,8 +70,31 @@ const config: Config = {
           'stamind-decoration-success': "#4CB782",
         },
       },
+      keyframes: {
+        loginSlideOut: {
+          '0%': {transform: 'translateY(0)', opacity: 1},
+          '100%': {transform: 'translateY(-100%)', opacity: 0},
+        },
+        loginSlideUp: {
+          '0%': {transform: 'translateY()'},
+          '100%': {transform: 'translateY(-200%)'},
+        },
+        loginSlideIn: {
+          '0%': {transform: 'translateY(100%)', opacity: 0},
+          '100%': {transform: 'translateY(-80%)', opacity: 1},
+        },
+        fadeIn: {
+          '0%': {opacity: 0},
+          "100%": {opacity: 1},
+        }
+      },
+      animation: {
+        loginSlideOut: 'loginSlideOut 1s ease forwards',
+        loginSlideUp: 'loginSlideUp 1s ease forwards',
+        loginSlideIn: 'loginSlideIn 1s ease forwards',
+        fadeIn: 'fadeIn 0.8s ease forwards'
+      },
     },
   },
   plugins: [],
-};
-export default config;
+})
