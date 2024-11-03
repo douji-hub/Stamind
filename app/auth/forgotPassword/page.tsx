@@ -36,6 +36,7 @@ const page = () => {
         </div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="flex justify-center items-center flex-1">
           <ButtonComponent
             label={"Resend Password Reset Email"}
@@ -56,14 +57,19 @@ const page = () => {
 >>>>>>> 68254c2 (style: connect tailwind config, resize some gap and alert change to list)
 =======
 =======
+=======
+>>>>>>> 6454c7f (feat: change using component to display)
         <div className="flex justify-center items-center flex-1">
           <ButtonComponent
             label={"Resend Password Reset Email"}
             onClick={resendForgotPasswordEmail}
             customClass={"h-[2.2rem] text-xs bg-grey-stamind-grey-400"}
           />
+<<<<<<< HEAD
 >>>>>>> 6392f8b (feat: change using component to display)
 >>>>>>> 3c1c634 (feat: change using component to display)
+=======
+>>>>>>> 6454c7f (feat: change using component to display)
         </div>
       </div>
     </div>
