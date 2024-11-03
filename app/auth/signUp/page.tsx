@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import InputField from "./components/InputField";
 import PasswordField from "./components/PasswordField";
-import { useForm } from "./hooks/useForm";
-import GoogleSignInButton from "@/components/auth/login/button/GoogleSignInButton";
-import EmailField from "./components/EmailField";
+import {useForm} from "./hooks/useForm";
+import InputComponent from "@/components/form/input/InputComponent";
+import GoogleSignInComponent from "@/components/form/button/GoogleSignInComponent";
+import ButtonComponent from "@/components/form/button/ButtonComponent";
+import TextWithSideLinkComponent from "@/components/form/text/TextWithSideLinkComponent";
 
 const Page: React.FC = () => {
   const {
@@ -17,37 +18,35 @@ const Page: React.FC = () => {
     isFormValid,
   } = useForm();
 
-  const { email, firstName, password, confirmPassword } = formValues;
-  const { setEmail, setFirstName, setPassword, setConfirmPassword } =
+  const {email, firstName, password, confirmPassword} = formValues;
+  const {setEmail, setFirstName, setPassword, setConfirmPassword} =
     setFormValues;
-  const { hasTyped, setHasTyped } = typingStatus;
+  const {hasTyped, setHasTyped} = typingStatus;
   const {
     showPassword,
     toggleShowPassword,
-    showConfirmPassword,
-    toggleShowConfirmPassword,
   } = passwordVisibility;
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    setHasTyped((prev) => ({ ...prev, email: true }));
+    setHasTyped((prev) => ({...prev, email: true}));
   };
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
-    setHasTyped((prev) => ({ ...prev, firstName: true }));
+    setHasTyped((prev) => ({...prev, firstName: true}));
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-    setHasTyped((prev) => ({ ...prev, password: true }));
+    setHasTyped((prev) => ({...prev, password: true}));
   };
 
   const handleConfirmPasswordChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setConfirmPassword(e.target.value);
-    setHasTyped((prev) => ({ ...prev, confirmPassword: true }));
+    setHasTyped((prev) => ({...prev, confirmPassword: true}));
   };
 
   return (
@@ -55,39 +54,38 @@ const Page: React.FC = () => {
       <div className="relative top-[4rem] left-0 w-full text-[3rem] text-center font-bold text-lightgrey-stamind-white">
         Join and start your journey
       </div>
-      <div className="flex flex-col justify-center items-center mt-[8rem] gap-4">
-        <GoogleSignInButton />
-
-        <span className="text-[0.7rem] text-lightgrey-stamind-lightgrey-200">
-          or
-        </span>
-
-        <EmailField
-          label="Your Email"
-          placeholder="Enter your email"
+      <div className="flex flex-col justify-center items-center mt-[8rem] my-10 gap-4">
+        <div className={'w-[22rem]'}>
+          <GoogleSignInComponent/>
+        </div>
+        <div className="text-center text-lightgrey-stamind-lightgrey-200">or</div>
+        <InputComponent
+          label={"Your Email"}
+          placeholder={"Enter your email"}
+          type={"email"}
           value={email}
           onChange={handleEmailChange}
           hasError={hasTyped.email && errors.emptyEmail}
-          error={
+          errorMessage={
             hasTyped.email && errors.emptyEmail
               ? "Email cannot be empty."
               : undefined
           }
+          boxClass={"w-[22rem]"}
         />
-
-        <InputField
-          label="Your First Name"
-          placeholder="Enter your name"
+        <InputComponent
+          label={"Your First Name"}
+          placeholder={"Enter your name"}
           value={firstName}
           onChange={handleUsernameChange}
           hasError={hasTyped.firstName && errors.emptyUsername}
-          error={
+          errorMessage={
             hasTyped.firstName && errors.emptyUsername
               ? "Username cannot be empty."
               : undefined
           }
+          boxClass={"w-[22rem]"}
         />
-
         <PasswordField
           label="Password"
           placeholder="Enter your password"
@@ -135,30 +133,28 @@ const Page: React.FC = () => {
           )}
         </PasswordField>
 
-        <PasswordField
-          label="Confirm Password"
-          placeholder="Enter your password again"
+        <InputComponent
+          label={"Confirm Password"}
+          type={"password"}
+          placeholder={"Enter your password again"}
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
-          showPassword={showConfirmPassword}
-          toggleShowPassword={toggleShowConfirmPassword}
           hasError={hasTyped.confirmPassword && !errors.match}
-          error={
+          errorMessage={
             hasTyped.confirmPassword && !errors.match
               ? "Passwords do not match. Please try again."
               : undefined
           }
-          customClass={"h-[5rem]"}
+          boxClass={"w-[22rem]"}
         />
 
-        <button
-          className={`w-[6.8rem] h-[2.6rem] mt-2 mb-6 py-2 px-4 bg-primary-stamind-blue-1000 text-white text-[0.85rem] font-light rounded
-            ${isFormValid() ? "opacity-100" : "opacity-60"}`}
+        <ButtonComponent
+          label={"Get Started"}
           disabled={!isFormValid()}
-        >
-          Get Started
-        </button>
+          customClass={`h-[2.6rem] mt-2 bg-primary-stamind-blue-1000 ${isFormValid() ? "opacity-100" : "opacity-60"}`}
+        />
       </div>
+      <TextWithSideLinkComponent text={"already have account?"} link={"/auth/login"} linkText={"Login"}/>
     </div>
   );
 };

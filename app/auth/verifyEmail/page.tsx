@@ -1,5 +1,5 @@
 import React from "react";
-import Reciprocal from "@/components/auth/login/action/Reciprocal";
+import Reciprocal from "@/components/utils/Reciprocal";
 
 const page = () => {
   return (
