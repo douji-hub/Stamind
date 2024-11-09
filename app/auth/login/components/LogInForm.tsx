@@ -22,7 +22,9 @@ const LogInForm = (props: LogInFormProps) => {
       {/* Email Section */}
       <div className={isRegister ? 'animate-loginSlideOut' : ''}>
         <GoogleSignInComponent />
-        <div className="my-8 text-center text-stamind-white-200">or</div>
+        <div className="my-8 text-center text-lightgrey-stamind-lightgrey-200">
+          or
+        </div>
       </div>
       <div
         className={`flex justify-between items-end w-full gap-x-2 ${

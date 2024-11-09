@@ -47,7 +47,7 @@ const Timer = ({ initialTime }: TimerProps) => {
     <div className="w-full">
       <div
         className={`mt-[2.8rem] mb-[0.7rem] text-center text-[4rem] transition-colors duration-500 ease-in-out ${
-          isRegister ? 'text-stamind-black-400' : 'text-stamind-white-000'
+          isRegister ? 'text-[#2C2D3C]' : 'text-white'
         }`}
       >
         {formatTime(timeLeft)}
@@ -60,7 +60,7 @@ const Timer = ({ initialTime }: TimerProps) => {
               isRegister ? 'opacity-0' : 'opacity-100'
             }`}
           >
-            <div className="text-[0.9375rem] text-center text-stamind-white-000">
+            <div className="text-[0.9375rem] text-center text-[#fff]">
               For security reasons, the link will expire in 10 minutes.
             </div>
           </div>
@@ -71,7 +71,7 @@ const Timer = ({ initialTime }: TimerProps) => {
             isRegister ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="text-[0.9375rem] text-center text-stamind-white-000">
+          <div className="text-[0.9375rem] text-center text-[#fff]">
             Verification expired. Click below to resend the email.
           </div>
         </div>

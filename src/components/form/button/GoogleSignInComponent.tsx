@@ -6,7 +6,7 @@ const GoogleSignInComponent = () => {
     <Button
       size="lg"
       variant="filled"
-      className="w-full flex justify-center items-center gap-3 text-gray-900 bg-stamind-white-000"
+      className="w-full flex justify-center items-center gap-3 text-grey-stamind-grey-300 bg-lightgrey-stamind-white"
     >
       <img
         src="https://docs.material-tailwind.com/icons/google.svg"

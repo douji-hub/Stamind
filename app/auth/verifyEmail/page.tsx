@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React from 'react'
 import Timer from '@/components/timer/Timer'
-=======
-import React from "react";
-import Timer from "@/components/timer/Timer";
->>>>>>> 092d96b (rename: Reciprocal to timer)
 
 const page = () => {
   return (
@@ -18,15 +13,9 @@ const page = () => {
         <br /> Please check your email and click the verification link to
         continue.
       </div>
-<<<<<<< HEAD
-      <Timer initialTime={300} />
-      <div className="flex flex-col justify-start mt-[5rem] w-[42.625rem] bg-stamind-specific-command-bar-bg">
-        <div className="px-[0.625rem] py-[0.5rem] text-stamind-white-200 text-[0.6875rem]">
-=======
       <Timer />
       <div className="flex flex-col justify-start bg-uiSpecificColor-stamind-bg-command mt-[5rem] w-[42.625rem]">
         <div className="px-[0.625rem] py-[0.5rem] text-[0.6875rem] text-lightgrey-stamind-lightgrey-200">
->>>>>>> 092d96b (rename: Reciprocal to timer)
           <span className="font-bold">Didn't receive the email?</span>
           <ul>
             <li className="ml-[1rem] list-disc text-stamind-white-200">

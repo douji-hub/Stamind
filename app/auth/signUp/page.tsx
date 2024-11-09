@@ -8,13 +8,21 @@ import ButtonComponent from "@/components/form/button/ButtonComponent";
 import TextWithSideLinkComponent from "@/components/form/text/TextWithSideLinkComponent";
 
 const Page: React.FC = () => {
-  const { formValues, setFormValues, typingStatus, errors, isFormValid } =
-    useForm();
+  const {
+    formValues,
+    setFormValues,
+    typingStatus,
+    isFormValid,
+    getEmailErrorMessages,
+    getUsernameErrorMessages,
+    getPasswordErrorMessages,
+    getConfirmPasswordErrorMessages,
+  } = useForm();
 
   const { email, firstName, password, confirmPassword } = formValues;
   const { setEmail, setFirstName, setPassword, setConfirmPassword } =
     setFormValues;
-  const { hasTyped, setHasTyped } = typingStatus;
+  const { setHasTyped } = typingStatus;
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -38,6 +46,11 @@ const Page: React.FC = () => {
     setHasTyped((prev) => ({ ...prev, confirmPassword: true }));
   };
 
+  const emailError = getEmailErrorMessages();
+  const usernameError = getUsernameErrorMessages();
+  const passwordError = getPasswordErrorMessages();
+  const confirmPasswordError = getConfirmPasswordErrorMessages();
+
   return (
     <div className="h-[100%]">
       <div className="relative top-[4rem] left-0 w-full text-[3rem] text-center font-bold text-stamind-white-000">
@@ -56,13 +69,9 @@ const Page: React.FC = () => {
           type="email"
           value={email}
           onChange={handleEmailChange}
-          hasError={hasTyped.email && errors.emptyEmail}
-          errorMessage={
-            hasTyped.email && errors.emptyEmail
-              ? ["Email cannot be empty."]
-              : undefined
-          }
-          boxClass={"w-[22rem]"}
+          hasError={emailError.hasError}
+          errorMessage={emailError.errorMessages}
+          boxClass="w-[22rem]"
         />
 
         <InputComponent
@@ -70,58 +79,31 @@ const Page: React.FC = () => {
           placeholder="Enter your name"
           value={firstName}
           onChange={handleUsernameChange}
-          hasError={hasTyped.firstName && errors.emptyUsername}
-          errorMessage={
-            hasTyped.firstName && errors.emptyUsername
-              ? ["Username cannot be empty."]
-              : undefined
-          }
-          boxClass={"w-[22rem]"}
+          hasError={usernameError.hasError}
+          errorMessage={usernameError.errorMessages}
+          boxClass="w-[22rem]"
         />
 
         <InputComponent
-          label={"Password"}
-          type={"password"}
-          placeholder={"Enter your password"}
+          label="Password"
+          type="password"
+          placeholder="Enter your password"
           value={password}
           onChange={handlePasswordChange}
-          hasError={
-            hasTyped.password &&
-            (!errors.length ||
-              !errors.uppercase ||
-              !errors.lowercase ||
-              !errors.number ||
-              !errors.specialChar)
-          }
-          errorMessage={
-            hasTyped.password
-              ? [
-                  !errors.length &&
-                    "Your password must be at least 8 characters long.",
-                  !errors.uppercase && "It must include uppercase letters.",
-                  !errors.lowercase && "It must include lowercase letters.",
-                  !errors.number && "It must include numbers.",
-                  !errors.specialChar &&
-                    "It must include special characters (e.g., !, @, #, etc.).",
-                ].filter(Boolean)
-              : undefined
-          }
-          boxClass={"w-[22rem]"}
+          hasError={passwordError.hasError}
+          errorMessage={passwordError.errorMessages}
+          boxClass="w-[22rem]"
         />
 
         <InputComponent
-          label={"Confirm Password"}
-          type={"confirmPassword"}
-          placeholder={"Enter your password again"}
+          label="Confirm Password"
+          type="confirmPassword"
+          placeholder="Enter your password again"
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
-          hasError={hasTyped.confirmPassword && !errors.match}
-          errorMessage={
-            hasTyped.confirmPassword && !errors.match
-              ? ["Passwords do not match. Please try again."]
-              : undefined
-          }
-          boxClass={"w-[22rem]"}
+          hasError={confirmPasswordError.hasError}
+          errorMessage={confirmPasswordError.errorMessages}
+          boxClass="w-[22rem]"
         />
 
         <ButtonComponent
@@ -132,10 +114,11 @@ const Page: React.FC = () => {
           }`}
         />
       </div>
+
       <TextWithSideLinkComponent
-        text={"already have account?"}
-        link={"/auth/login"}
-        linkText={"Login"}
+        text="already have account?"
+        link="/auth/login"
+        linkText="Login"
       />
     </div>
   );
