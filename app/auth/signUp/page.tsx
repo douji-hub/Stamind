@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import { useForm } from "./hooks/useForm";
+import { useForm } from "@/hooks/auth/useForm";
 import InputComponent from "@/components/form/input/InputComponent";
 import GoogleSignInComponent from "@/components/form/button/GoogleSignInComponent";
 import ButtonComponent from "@/components/form/button/ButtonComponent";
