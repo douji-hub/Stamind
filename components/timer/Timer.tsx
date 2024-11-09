@@ -2,13 +2,10 @@
 
 import { useState, useEffect } from "react";
 
-
-function Reciprocal() {
+const Timer = () => {
   const [timeLeft, setTimeLeft] = useState<number>(3);
-  const [isRegister, setIsRegister] =
-    useState<boolean>(false);
-  const [showMessage, setShowMessage] =
-    useState<boolean>(true);
+  const [isRegister, setIsRegister] = useState<boolean>(false);
+  const [showMessage, setShowMessage] = useState<boolean>(true);
 
   //計時器
   const startTimer = () => {
@@ -31,7 +28,6 @@ function Reciprocal() {
       handleTimeEnd();
     }
   }, [timeLeft]);
-
 
   //轉換時間
   const formatTime = (time: number) => {
@@ -78,6 +74,6 @@ function Reciprocal() {
       </div>
     </div>
   );
-}
+};
 
-export default Reciprocal;
+export default Timer;
