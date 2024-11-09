@@ -36,6 +36,9 @@ jobs:
     - name: Run TypeScript Test
       run: npx tsc --noEmit
 
+    - name: Check code formatting
+      run: npm run format:check
+
     - name: Run tests
       run: npm test
 
