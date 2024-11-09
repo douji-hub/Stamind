@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import Reciprocal from "@/components/utils/Reciprocal";
+import Timer from "@/components/timer/Timer";
 import ButtonComponent from "@/components/form/button/ButtonComponent";
 
 const page = () => {
@@ -20,7 +20,7 @@ const page = () => {
         <br /> Please check your inbox and follow the instructions to reset your
         password.
       </div>
-      <Reciprocal />
+      <Timer initialTime={300} />
       <div className="flex flex-col justify-start bg-uiSpecificColor-stamind-bg-command mt-[5rem] w-[40rem] h-[7.5rem]">
         <div className="px-[0.625rem] py-[0.5rem] text-[0.8125rem] text-lightgrey-stamind-lightgrey-200">
           Didn't receive the email?

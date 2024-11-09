@@ -1,14 +1,14 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 type InputFieldProps = {
   label: string;
   placeholder?: string;
-  type?: "text" | "email" | "password";
+  type?: "text" | "email" | "password" | "confirmPassword";
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorMessage?: string;
+  errorMessage?: (string | false)[];
   hasError?: boolean;
   boxClass?: string;
 };
@@ -16,29 +16,28 @@ type InputFieldProps = {
 type VisibleIconProps = {
   showValue: boolean;
   toggleShowValue: () => void;
-}
+};
 
 const VisibleIcon = (props: VisibleIconProps) => {
-  const {showValue, toggleShowValue} = props
+  const { showValue, toggleShowValue } = props;
   return (
     <>
       {showValue ? (
         <VisibilityIcon
           onClick={toggleShowValue}
           className="absolute top-1/2 right-3 transform -translate-y-1/2 text-uiSpecificColor-stamind-icon cursor-pointer"
-          style={{fontSize: "1rem"}}
+          style={{ fontSize: "1rem" }}
         />
       ) : (
         <VisibilityOffIcon
           onClick={toggleShowValue}
           className="absolute top-1/2 right-3 transform -translate-y-1/2 text-uiSpecificColor-stamind-icon cursor-pointer"
-          style={{fontSize: "1rem"}}
+          style={{ fontSize: "1rem" }}
         />
-      )
-      }
+      )}
     </>
-  )
-}
+  );
+};
 
 const InputComponent = (props: InputFieldProps) => {
   const {
@@ -50,21 +49,24 @@ const InputComponent = (props: InputFieldProps) => {
     errorMessage,
     hasError = false,
     boxClass = "",
-  } = props
+  } = props;
 
   // using on type == password
-  const [showValue, setShowValue] = useState<boolean>(true)
+  const [showValue, setShowValue] = useState<boolean>(false);
 
   function toggleShowValue() {
-    setShowValue(prevState => !prevState)
+    setShowValue((prevState) => !prevState);
   }
 
   // Classify password and others, if is password field, then control type by "showValue"
-  function inputType(type: 'text' | 'email' | 'password', showValue: boolean) {
-    if (type == 'password') {
-      return showValue ? 'text' : 'password'
+  function inputType(
+    type: "text" | "email" | "password" | "confirmPassword",
+    showValue: boolean
+  ) {
+    if (type == "password" || type == "confirmPassword") {
+      return showValue ? "text" : "password";
     } else {
-      return type
+      return type;
     }
   }
 
@@ -86,15 +88,32 @@ const InputComponent = (props: InputFieldProps) => {
               : "border-grey-stamind-grey-400"
           }`}
         />
-        {type == 'password' && <VisibleIcon showValue={showValue} toggleShowValue={toggleShowValue}/>}
+        {(type === "password" || type === "confirmPassword") && (
+          <VisibleIcon
+            showValue={showValue}
+            toggleShowValue={toggleShowValue}
+          />
+        )}
       </div>
-      {hasError && (
-        <p className="text-[0.7rem] mt-[0.6rem] text-decoration-stamind-decoration-error-1 text-xs">
-          {errorMessage}
-        </p>
-      )}
+      {hasError &&
+        (type == "password" ? (
+          <ul className="mt-[0.6rem]">
+            {errorMessage?.map((message, index) => (
+              <li
+                key={index}
+                className="text-[0.7rem] ml-[1rem] list-disc text-grey-stamind-grey-200"
+              >
+                {message}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-[0.7rem] mt-[0.6rem] text-decoration-stamind-decoration-error-1 text-xs">
+            {errorMessage}
+          </p>
+        ))}
     </div>
-  )
-}
+  );
+};
 
 export default InputComponent;

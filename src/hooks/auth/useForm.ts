@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { validatePassword, validateUsername, validateEmail } from '../utils/validation';
+import { validatePassword, validateUsername, validateEmail } from 'src/utils/auth/validateForm';
+import {
+    getPasswordErrorMessages,
+    getConfirmPasswordErrorMessages,
+    getEmailErrorMessages,
+    getUsernameErrorMessages
+} from 'src/errors/form/errors';
 
 type Errors = {
     emptyEmail: boolean;
@@ -12,27 +18,26 @@ type Errors = {
     match: boolean;
 };
 
-// Customized Hook, used to manage form status and validation logic
+type HasTyped = {
+    email: boolean;
+    firstName: boolean;
+    password: boolean;
+    confirmPassword: boolean;
+};
+
 export const useForm = () => {
-    // input value state
-    const [email, setEmail] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState<string>('');
+    const [firstName, setFirstName] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
 
-    // Control the password display/hidden status
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-    // Whether the user has entered is used to control the display of error information.
-    const [hasTyped, setHasTyped] = useState({
+    const [hasTyped, setHasTyped] = useState<HasTyped>({
         email: false,
         firstName: false,
         password: false,
         confirmPassword: false,
     });
 
-    // error state
     const [errors, setErrors] = useState<Errors>({
         emptyEmail: false,
         emptyUsername: false,
@@ -44,7 +49,6 @@ export const useForm = () => {
         match: false,
     });
 
-    // Monitor user name changes for verification
     useEffect(() => {
         setErrors((prevErrors) => ({
             ...prevErrors,
@@ -52,7 +56,6 @@ export const useForm = () => {
         }));
     }, [email]);
 
-    // Monitor user name changes for verification
     useEffect(() => {
         setErrors((prevErrors) => ({
             ...prevErrors,
@@ -60,7 +63,6 @@ export const useForm = () => {
         }));
     }, [firstName]);
 
-    // Monitor password and confirmation password changes for verification
     useEffect(() => {
         const passwordErrors = validatePassword(password);
         setErrors((prevErrors) => ({
@@ -70,7 +72,7 @@ export const useForm = () => {
         }));
     }, [password, confirmPassword]);
 
-    const isFormValid = () => {
+    const isFormValid = (): boolean => {
         return (
             !errors.emptyEmail &&
             !errors.emptyUsername &&
@@ -82,9 +84,6 @@ export const useForm = () => {
             errors.match
         );
     };
-
-    const toggleShowPassword = () => setShowPassword((prev) => !prev);
-    const toggleShowConfirmPassword = () => setShowConfirmPassword((prev) => !prev);
 
     return {
         formValues: {
@@ -99,17 +98,18 @@ export const useForm = () => {
             setPassword,
             setConfirmPassword,
         },
-        passwordVisibility: {
-            showPassword,
-            toggleShowPassword,
-            showConfirmPassword,
-            toggleShowConfirmPassword,
-        },
         typingStatus: {
             hasTyped,
             setHasTyped,
         },
-        errors,
         isFormValid,
+        getEmailErrorMessages: () =>
+            getEmailErrorMessages(errors.emptyEmail, hasTyped.email),
+        getUsernameErrorMessages: () =>
+            getUsernameErrorMessages(errors.emptyUsername, hasTyped.firstName),
+        getPasswordErrorMessages: () =>
+            getPasswordErrorMessages(errors, hasTyped.password),
+        getConfirmPasswordErrorMessages: () =>
+            getConfirmPasswordErrorMessages(errors.match, hasTyped.confirmPassword),
     };
 };
