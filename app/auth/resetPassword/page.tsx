@@ -1,28 +1,16 @@
 "use client";
 
 import React from "react";
-import PasswordField from "./components/PasswordField";
 import { useForm } from "./hooks/useForm";
+import InputComponent from "@/components/form/input/InputComponent";
 
 const Page: React.FC = () => {
-  const {
-    formValues,
-    setFormValues,
-    passwordVisibility,
-    typingStatus,
-    errors,
-    isFormValid,
-  } = useForm();
+  const { formValues, setFormValues, typingStatus, errors, isFormValid } =
+    useForm();
 
   const { password, confirmPassword } = formValues;
   const { setPassword, setConfirmPassword } = setFormValues;
   const { hasTyped, setHasTyped } = typingStatus;
-  const {
-    showPassword,
-    toggleShowPassword,
-    showConfirmPassword,
-    toggleShowConfirmPassword,
-  } = passwordVisibility;
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -42,13 +30,12 @@ const Page: React.FC = () => {
         Reset Your Password
       </div>
       <div className="flex flex-col justify-center items-center mt-[17rem] gap-4">
-        <PasswordField
-          label="Password"
-          placeholder="Enter your password"
+        <InputComponent
+          label={"Password"}
+          type={"password"}
+          placeholder={"Enter your password"}
           value={password}
           onChange={handlePasswordChange}
-          showPassword={showPassword}
-          toggleShowPassword={toggleShowPassword}
           hasError={
             hasTyped.password &&
             (!errors.length ||
@@ -57,52 +44,35 @@ const Page: React.FC = () => {
               !errors.number ||
               !errors.specialChar)
           }
-        >
-          {hasTyped.password && (
-            <ul className="mt-[0.6rem]">
-              {!errors.length && (
-                <li className="text-[0.7rem] ml-[1rem] list-disc text-grey-stamind-grey-200 ">
-                  Your password must be at least 8 characters long.
-                </li>
-              )}
-              {!errors.uppercase && (
-                <li className="text-[0.7rem] ml-[1rem] list-disc text-grey-stamind-grey-200 ">
-                  It must include uppercase letters.
-                </li>
-              )}
-              {!errors.lowercase && (
-                <li className="text-[0.7rem] ml-[1rem] list-disc text-grey-stamind-grey-200 ">
-                  It must include lowercase letters.
-                </li>
-              )}
-              {!errors.number && (
-                <li className="text-[0.7rem] ml-[1rem] list-disc text-grey-stamind-grey-200 ">
-                  It must include numbers.
-                </li>
-              )}
-              {!errors.specialChar && (
-                <li className="text-[0.7rem] ml-[1rem] list-disc text-grey-stamind-grey-200 ">
-                  It must include special characters (e.g., !, @, #, etc.).
-                </li>
-              )}
-            </ul>
-          )}
-        </PasswordField>
-
-        <PasswordField
-          label="Confirm Password"
-          placeholder="Enter your password again"
-          value={confirmPassword}
-          onChange={handleConfirmPasswordChange}
-          showPassword={showConfirmPassword}
-          toggleShowPassword={toggleShowConfirmPassword}
-          hasError={hasTyped.confirmPassword && !errors.match}
-          error={
-            hasTyped.confirmPassword && !errors.match
-              ? "Passwords do not match. Please try again."
+          errorMessage={
+            hasTyped.password
+              ? [
+                  !errors.length &&
+                    "Your password must be at least 8 characters long.",
+                  !errors.uppercase && "It must include uppercase letters.",
+                  !errors.lowercase && "It must include lowercase letters.",
+                  !errors.number && "It must include numbers.",
+                  !errors.specialChar &&
+                    "It must include special characters (e.g., !, @, #, etc.).",
+                ].filter(Boolean)
               : undefined
           }
-          customClass={"h-[5rem]"}
+          boxClass={"w-[22rem]"}
+        />
+
+        <InputComponent
+          label={"Confirm Password"}
+          type={"confirmPassword"}
+          placeholder={"Enter your password again"}
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
+          hasError={hasTyped.confirmPassword && !errors.match}
+          errorMessage={
+            hasTyped.confirmPassword && !errors.match
+              ? ["Passwords do not match. Please try again."]
+              : undefined
+          }
+          boxClass={"w-[22rem]"}
         />
 
         <button
