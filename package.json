@@ -19,8 +19,18 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+    "*.{js,jsx,ts,tsx}": [
+      "next lint",
       "prettier --write"
+    ],
+    "*.{json,css,scss}": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "markdownlint"
+    ],
+    "package.json": [
+      "sort-package-json"
     ]
   },
   "prettier": {
