@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import InputComponent from "@/components/form/input/InputComponent";
 import ButtonComponent from "@/components/form/button/ButtonComponent";
@@ -9,33 +9,40 @@ import GoogleSignInComponent from "@/components/form/button/GoogleSignInComponen
 type LogInFormProps = {
   isRegister: boolean;
   setIsRegister: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
 const LogInForm = (props: LogInFormProps) => {
-  const {
-    isRegister,
-    setIsRegister,
-  } = props
+  const { isRegister, setIsRegister } = props;
 
-  const [inputEmail, setInputEmail] = useState("");
-  const [inputPassword, setInputPassword] = useState("");
+  const [inputEmail, setInputEmail] = useState<string>("");
+  const [inputPassword, setInputPassword] = useState<string>("");
 
   return (
     <div className="relative mt-[7.75rem] mx-auto w-[22rem]">
       {/* Email Section */}
       <div className={isRegister ? "animate-loginSlideOut" : ""}>
-        <GoogleSignInComponent/>
-        <div className="my-8 text-center text-lightgrey-stamind-lightgrey-200">or</div>
+        <GoogleSignInComponent />
+        <div className="my-8 text-center text-lightgrey-stamind-lightgrey-200">
+          or
+        </div>
       </div>
-      <div className={`flex justify-between items-end w-full gap-x-2 ${isRegister ? "animate-loginSlideUp" : ""}`}>
+      <div
+        className={`flex justify-between items-end w-full gap-x-2 ${
+          isRegister ? "animate-loginSlideUp" : ""
+        }`}
+      >
         <InputComponent
           label={"Your email"}
           placeholder={"Enter your email"}
           value={inputEmail}
           onChange={(e) => setInputEmail(e.target.value)}
-          boxClass={isRegister ? "w-[22rem] transition-width duration-1000 ease" : "w-[16rem]"}
+          boxClass={
+            isRegister
+              ? "w-[22rem] transition-width duration-1000 ease"
+              : "w-[16rem]"
+          }
         />
-        <div className={isRegister ? 'hidden' : ''}>
+        <div className={isRegister ? "hidden" : ""}>
           <ButtonComponent
             label={"Get Started"}
             onClick={() => setIsRegister(true)}
@@ -48,10 +55,14 @@ const LogInForm = (props: LogInFormProps) => {
         {/*    <span className={"text-decoration-stamind-decoration-error-1 text-xs"}>Can't be empty</span>}*/}
       </div>
 
-
       {/* Password Section */}
       <div
-        className={isRegister ? "flex flex-col justify-center items-center gap-y-3 animate-loginSlideIn" : "opacity-0"}>
+        className={
+          isRegister
+            ? "flex flex-col justify-center items-center gap-y-3 animate-loginSlideIn"
+            : "opacity-0"
+        }
+      >
         <InputComponent
           label={"Your Password"}
           type={"password"}

@@ -13,7 +13,7 @@ const page = () => {
         <br /> Please check your email and click the verification link to
         continue.
       </div>
-      <Timer />
+      <Timer initialTime={300} />
       <div className="flex flex-col justify-start bg-uiSpecificColor-stamind-bg-command mt-[5rem] w-[42.625rem]">
         <div className="px-[0.625rem] py-[0.5rem] text-[0.6875rem] text-lightgrey-stamind-lightgrey-200">
           <span className="font-bold">Didn't receive the email?</span>

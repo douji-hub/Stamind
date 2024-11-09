@@ -3,6 +3,7 @@ import withMT from "@material-tailwind/react/utils/withMT";
 module.exports = withMT({
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
@@ -72,20 +73,20 @@ module.exports = withMT({
       },
       keyframes: {
         loginSlideOut: {
-          '0%': {transform: 'translateY(0)', opacity: 1},
-          '100%': {transform: 'translateY(-100%)', opacity: 0},
+          '0%': { transform: 'translateY(0)', opacity: 1 },
+          '100%': { transform: 'translateY(-100%)', opacity: 0 },
         },
         loginSlideUp: {
-          '0%': {transform: 'translateY()'},
-          '100%': {transform: 'translateY(-200%)'},
+          '0%': { transform: 'translateY()' },
+          '100%': { transform: 'translateY(-200%)' },
         },
         loginSlideIn: {
-          '0%': {transform: 'translateY(100%)', opacity: 0},
-          '100%': {transform: 'translateY(-80%)', opacity: 1},
+          '0%': { transform: 'translateY(100%)', opacity: 0 },
+          '100%': { transform: 'translateY(-80%)', opacity: 1 },
         },
         fadeIn: {
-          '0%': {opacity: 0},
-          "100%": {opacity: 1},
+          '0%': { opacity: 0 },
+          "100%": { opacity: 1 },
         }
       },
       animation: {

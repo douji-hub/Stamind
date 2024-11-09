@@ -2,8 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-const Timer = () => {
-  const [timeLeft, setTimeLeft] = useState<number>(3);
+type TimerProps = {
+  initialTime: number;
+};
+
+const Timer = ({ initialTime }: TimerProps) => {
+  const [timeLeft, setTimeLeft] = useState<number>(initialTime);
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const [showMessage, setShowMessage] = useState<boolean>(true);
 
