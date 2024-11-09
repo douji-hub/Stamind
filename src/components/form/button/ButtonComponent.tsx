@@ -1,22 +1,22 @@
 import React from 'react'
 
-import {Button} from "@material-tailwind/react"
+import { Button } from '@material-tailwind/react'
 
 type ButtonComponentProps = {
-  label: string;
-  variant?: "filled" | "gradient" | "outlined" | "text";
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  disabled?: boolean;
-  customClass?: string;
+  label: string
+  variant?: 'filled' | 'gradient' | 'outlined' | 'text'
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  disabled?: boolean
+  customClass?: string
 }
 
 const ButtonComponent = (props: ButtonComponentProps) => {
   const {
     label,
-    variant = "filled",
+    variant = 'filled',
     onClick,
     disabled = false,
-    customClass = "",
+    customClass = '',
   } = props
 
   return (
