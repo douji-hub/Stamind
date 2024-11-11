@@ -1,5 +1,5 @@
-import React from "react";
-import Timer from "@/components/timer/Timer";
+import React from 'react'
+import Timer from '@/components/timer/Timer'
 
 const page = () => {
   return (
@@ -8,7 +8,7 @@ const page = () => {
         Verify Your Email Address
       </div>
       <div className="mt-[10rem] text-[0.9375rem] text-center text-lightgrey-stamind-white">
-        A verification email has been sent to{" "}
+        A verification email has been sent to{' '}
         <span className="font-bold">ex***le@gmail.com</span>
         <br /> Please check your email and click the verification link to
         continue.
@@ -37,7 +37,7 @@ const page = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default page;
+export default page

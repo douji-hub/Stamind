@@ -8,14 +8,48 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "echo \"Warning: no test specified\""
+    "test": "echo \"Warning: no test specified\"",
+    "codecop": "next lint && npx tsc -noEmit && npm run format:check",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "format:staged": "prettier --write $(git diff --cached --name-only --diff-filter=ACM | grep -E \"\\.(js|jsx|ts|tsx|json|css|scss|md)$\")"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "next lint",
+      "prettier --write"
+    ],
+    "*.{json,css,scss}": [
+      "prettier --write"
+    ],
+    "*.md": [
+      "markdownlint"
+    ],
+    "package.json": [
+      "sort-package-json"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+    "embeddedLanguageFormatting": "auto",
+    "bracketSpacing": true,
+    "semi": false
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@material-tailwind/react": "^2.1.10",
     "@mui/icons-material": "^6.1.5",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "next": "14.2.13",
+    "prettier": "^3.3.3",
     "react": "^18",
     "react-dom": "^18"
   },

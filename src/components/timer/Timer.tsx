@@ -1,53 +1,53 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
 
 type TimerProps = {
-  initialTime: number;
-};
+  initialTime: number
+}
 
 const Timer = ({ initialTime }: TimerProps) => {
-  const [timeLeft, setTimeLeft] = useState<number>(initialTime);
-  const [isRegister, setIsRegister] = useState<boolean>(false);
-  const [showMessage, setShowMessage] = useState<boolean>(true);
+  const [timeLeft, setTimeLeft] = useState<number>(initialTime)
+  const [isRegister, setIsRegister] = useState<boolean>(false)
+  const [showMessage, setShowMessage] = useState<boolean>(true)
 
   //計時器
   const startTimer = () => {
     const timer = setInterval(() => {
-      setTimeLeft((prevTime: number) => prevTime - 1);
-    }, 1000);
-    return () => clearInterval(timer);
-  };
+      setTimeLeft((prevTime: number) => prevTime - 1)
+    }, 1000)
+    return () => clearInterval(timer)
+  }
 
   //處裡倒數結束
   const handleTimeEnd = () => {
-    setIsRegister(true);
-    setTimeout(() => setShowMessage(false), 1000);
-  };
+    setIsRegister(true)
+    setTimeout(() => setShowMessage(false), 1000)
+  }
 
   useEffect(() => {
     if (timeLeft > 0) {
-      return startTimer();
+      return startTimer()
     } else {
-      handleTimeEnd();
+      handleTimeEnd()
     }
-  }, [timeLeft]);
+  }, [timeLeft])
 
   //轉換時間
   const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = time % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+    const minutes = Math.floor(time / 60)
+    const seconds = time % 60
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
       2,
-      "0"
-    )}`;
-  };
+      '0',
+    )}`
+  }
 
   return (
     <div className="w-full">
       <div
         className={`mt-[2.8rem] mb-[0.7rem] text-center text-[4rem] transition-colors duration-500 ease-in-out ${
-          isRegister ? "text-[#2C2D3C]" : "text-white"
+          isRegister ? 'text-[#2C2D3C]' : 'text-white'
         }`}
       >
         {formatTime(timeLeft)}
@@ -57,7 +57,7 @@ const Timer = ({ initialTime }: TimerProps) => {
         {showMessage && (
           <div
             className={`inset-0 transition-opacity duration-1000 ease-in-out ${
-              isRegister ? "opacity-0" : "opacity-100"
+              isRegister ? 'opacity-0' : 'opacity-100'
             }`}
           >
             <div className="text-[0.9375rem] text-center text-[#fff]">
@@ -68,7 +68,7 @@ const Timer = ({ initialTime }: TimerProps) => {
 
         <div
           className={`inset-0 transition-opacity delay-1000 duration-1000 ease-in-out ${
-            isRegister ? "opacity-100" : "opacity-0"
+            isRegister ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <div className="text-[0.9375rem] text-center text-[#fff]">
@@ -77,7 +77,7 @@ const Timer = ({ initialTime }: TimerProps) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Timer;
+export default Timer

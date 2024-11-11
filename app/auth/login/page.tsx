@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState } from 'react'
+import Image from 'next/image'
 
-import LogInForm from "./components/LogInForm";
-import TextWithSideLinkComponent from "@/components/form/text/TextWithSideLinkComponent";
+import LogInForm from './components/LogInForm'
+import TextWithSideLinkComponent from '@/components/form/text/TextWithSideLinkComponent'
 
 const page = () => {
-  const [isRegister, setIsRegister] = useState<boolean>(false);
+  const [isRegister, setIsRegister] = useState<boolean>(false)
 
   return (
     <div>
@@ -26,26 +26,26 @@ const page = () => {
         </div>
         <LogInForm isRegister={isRegister} setIsRegister={setIsRegister} />
         {!isRegister && (
-          <div className={"animate-fadeIn"}>
+          <div className={'animate-fadeIn'}>
             <TextWithSideLinkComponent
-              text={"New here?"}
-              link={"/auth/signUp"}
-              linkText={"Sign up"}
+              text={'New here?'}
+              link={'/auth/signUp'}
+              linkText={'Sign up'}
             />
           </div>
         )}
         {isRegister && (
-          <div className={"animate-fadeIn"}>
+          <div className={'animate-fadeIn'}>
             <TextWithSideLinkComponent
-              text={"forgot password?"}
-              link={"/auth/forgotPassword"}
-              linkText={"Click Here"}
+              text={'forgot password?'}
+              link={'/auth/forgotPassword'}
+              linkText={'Click Here'}
             />
           </div>
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default page;
+export default page

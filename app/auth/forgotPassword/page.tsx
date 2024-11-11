@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import React from "react";
+import React from 'react'
 
-import Timer from "@/components/timer/Timer";
-import ButtonComponent from "@/components/form/button/ButtonComponent";
+import Timer from '@/components/timer/Timer'
+import ButtonComponent from '@/components/form/button/ButtonComponent'
 
 const page = () => {
   function resendForgotPasswordEmail() {
-    alert("resend!");
+    alert('resend!')
   }
 
   return (
@@ -36,14 +36,14 @@ const page = () => {
         </div>
         <div className="flex justify-center items-center flex-1">
           <ButtonComponent
-            label={"Resend Password Reset Email"}
+            label={'Resend Password Reset Email'}
             onClick={resendForgotPasswordEmail}
-            customClass={"h-[2.2rem] text-xs bg-grey-stamind-grey-400"}
+            customClass={'h-[2.2rem] text-xs bg-grey-stamind-grey-400'}
           />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default page;
+export default page
