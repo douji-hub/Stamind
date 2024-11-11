@@ -38,7 +38,7 @@ const page = () => {
           <ButtonComponent
             label={'Resend Password Reset Email'}
             onClick={resendForgotPasswordEmail}
-            customClass={'h-[2.5rem] text-xs bg-stamind-black-600'}
+            customClass={'h-[2.2rem] text-xs bg-grey-stamind-grey-400'}
           />
         </div>
       </div>

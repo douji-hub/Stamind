@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { useForm } from './hooks/useForm'
+import { useForm } from '@/hooks/auth/useForm'
 import InputComponent from '@/components/form/input/InputComponent'
 
 const Page: React.FC = () => {
@@ -29,9 +29,6 @@ const Page: React.FC = () => {
     setConfirmPassword(e.target.value)
     setHasTyped((prev) => ({ ...prev, confirmPassword: true }))
   }
-
-  const passwordError = getPasswordErrorMessages()
-  const confirmPasswordError = getConfirmPasswordErrorMessages()
 
   const passwordError = getPasswordErrorMessages()
   const confirmPasswordError = getConfirmPasswordErrorMessages()
@@ -65,7 +62,7 @@ const Page: React.FC = () => {
         />
 
         <button
-          className={`w-[6.8rem] h-[2.6rem] mt-2 mb-6 py-2 px-4 text-stamind-white-000 bg-primary-stamind-blue-1000 rounded text-[0.85rem] font-light
+          className={`w-[6.8rem] h-[2.6rem] mt-2 mb-6 py-2 px-4 bg-primary-stamind-blue-1000 text-white text-[0.85rem] font-light rounded
             ${isFormValid() ? 'opacity-100' : 'opacity-60'}`}
           disabled={!isFormValid()}
         >

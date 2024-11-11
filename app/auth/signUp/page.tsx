@@ -1,11 +1,11 @@
 'use client'
 
-import React from "react";
-import { useForm } from "@/hooks/auth/useForm";
-import InputComponent from "@/components/form/input/InputComponent";
-import GoogleSignInComponent from "@/components/form/button/GoogleSignInComponent";
-import ButtonComponent from "@/components/form/button/ButtonComponent";
-import TextWithSideLinkComponent from "@/components/form/text/TextWithSideLinkComponent";
+import React from 'react'
+import { useForm } from '@/hooks/auth/useForm'
+import InputComponent from '@/components/form/input/InputComponent'
+import GoogleSignInComponent from '@/components/form/button/GoogleSignInComponent'
+import ButtonComponent from '@/components/form/button/ButtonComponent'
+import TextWithSideLinkComponent from '@/components/form/text/TextWithSideLinkComponent'
 
 const Page: React.FC = () => {
   const {
@@ -17,39 +17,39 @@ const Page: React.FC = () => {
     getUsernameErrorMessages,
     getPasswordErrorMessages,
     getConfirmPasswordErrorMessages,
-  } = useForm();
+  } = useForm()
 
-  const { email, firstName, password, confirmPassword } = formValues;
+  const { email, firstName, password, confirmPassword } = formValues
   const { setEmail, setFirstName, setPassword, setConfirmPassword } =
-    setFormValues;
-  const { setHasTyped } = typingStatus;
+    setFormValues
+  const { setHasTyped } = typingStatus
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    setHasTyped((prev) => ({ ...prev, email: true }));
-  };
+    setEmail(e.target.value)
+    setHasTyped((prev) => ({ ...prev, email: true }))
+  }
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFirstName(e.target.value);
-    setHasTyped((prev) => ({ ...prev, firstName: true }));
-  };
+    setFirstName(e.target.value)
+    setHasTyped((prev) => ({ ...prev, firstName: true }))
+  }
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-    setHasTyped((prev) => ({ ...prev, password: true }));
-  };
+    setPassword(e.target.value)
+    setHasTyped((prev) => ({ ...prev, password: true }))
+  }
 
   const handleConfirmPasswordChange = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    setConfirmPassword(e.target.value);
-    setHasTyped((prev) => ({ ...prev, confirmPassword: true }));
-  };
+    setConfirmPassword(e.target.value)
+    setHasTyped((prev) => ({ ...prev, confirmPassword: true }))
+  }
 
-  const emailError = getEmailErrorMessages();
-  const usernameError = getUsernameErrorMessages();
-  const passwordError = getPasswordErrorMessages();
-  const confirmPasswordError = getConfirmPasswordErrorMessages();
+  const emailError = getEmailErrorMessages()
+  const usernameError = getUsernameErrorMessages()
+  const passwordError = getPasswordErrorMessages()
+  const confirmPasswordError = getConfirmPasswordErrorMessages()
 
   return (
     <div className="h-[100%]">
@@ -57,7 +57,7 @@ const Page: React.FC = () => {
         Join and start your journey
       </div>
       <div className="flex flex-col justify-center items-center mt-[8rem] my-10 gap-4">
-        <div className={"w-[22rem]"}>
+        <div className={'w-[22rem]'}>
           <GoogleSignInComponent />
         </div>
         <div className="text-center text-lightgrey-stamind-lightgrey-200">
@@ -110,19 +110,10 @@ const Page: React.FC = () => {
           label="Get Started"
           disabled={!isFormValid()}
           customClass={`h-[2.6rem] mt-2 bg-primary-stamind-blue-1000 ${
-            isFormValid() ? "opacity-100" : "opacity-60"
+            isFormValid() ? 'opacity-100' : 'opacity-60'
           }`}
         />
       </div>
-
-      <TextWithSideLinkComponent
-        text="already have account?"
-        link="/auth/login"
-        linkText="Login"
-      />
-    </div>
-  );
-};
 
       <TextWithSideLinkComponent
         text="already have account?"

@@ -7,7 +7,7 @@ const page = () => {
       <div className="fixed top-[8rem] left-0 w-full text-[3rem] text-center font-bold text-stamind-white-000">
         Verify Your Email Address
       </div>
-      <div className="mt-[10rem] text-[0.9375rem] text-center ttext-stamind-white-000">
+      <div className="mt-[10rem] text-[0.9375rem] text-center text-lightgrey-stamind-white">
         A verification email has been sent to{' '}
         <span className="font-bold">ex***le@gmail.com</span>
         <br /> Please check your email and click the verification link to

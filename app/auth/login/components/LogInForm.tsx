@@ -46,7 +46,7 @@ const LogInForm = (props: LogInFormProps) => {
           <ButtonComponent
             label={'Get Started'}
             onClick={() => setIsRegister(true)}
-            customClass={'h-[3rem] bg-stamind-primary-blue-900'}
+            customClass={'h-[3rem] bg-primary-stamind-blue-1000'}
           />
         </div>
       </div>
@@ -73,7 +73,7 @@ const LogInForm = (props: LogInFormProps) => {
         />
         <ButtonComponent
           label={'Login'}
-          customClass={'h-[3rem] mt-3 bg-stamind-primary-blue-900'}
+          customClass={'h-[3rem] mt-3 bg-primary-stamind-blue-1000'}
         />
       </div>
     </div>
