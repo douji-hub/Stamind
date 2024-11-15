@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Avatar from "@mui/material/Avatar";
 
-import CodeIcon from "@mui/icons-material/Code";
 
 const Sidebar = () => {
   //   const [searchValue, setSearchValue] = useState("");
@@ -41,7 +40,7 @@ const Sidebar = () => {
             <div className="text-[13px]">Note</div>
           </div>
           <div className="w-[5.75rem] h-[4.5rem] rounded-[0.25rem] border border-[#666666] flex flex-col justify-center items-center">
-            <CodeIcon className="text-[#9E9E9E]" />
+            <Image src="/images/Sidebar/code.svg" width={16} height={16} />
             <div className="text-[13px]">Code</div>
           </div>
         </div>
