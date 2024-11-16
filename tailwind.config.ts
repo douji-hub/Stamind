@@ -7,95 +7,95 @@ module.exports = withMT({
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}',
-    './@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}',
+    './@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
     extend: {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        //主色
-        primary: {
-          'stamind-blue-1000': '#064AB5',
-          'stamind-blue-800': '#2058AF',
-          'stamind-blue-200': '#71A5DD',
-          'stamind-blue': '#37466C',
-        },
-        lightgrey: {
-          'stamind-white': '#FFFFFF',
-          'stamind-lightgrey-100': '#EEEFFC',
-          'stamind-lightgrey-150': '#E0E1EC',
-          'stamind-lightgrey-200': '#D2D3E0',
-        },
-        grey: {
-          'stamind-grey-200': '#858699',
-          'stamind-grey-300': '#4D4F69',
-          'stamind-grey-400': '#393A4B',
-          'stamind-grey-600': '#272832',
-          'stamind-grey-800': '#313248',
-        },
-        black: {
-          'stamind-black-400': '#2C2D3C',
-          'stamind-black-600': '#292A35',
-          'stamind-black-800': '#191A23',
-          'stamind-black-850': '#151621',
-        },
-        uiSpecificColor: {
-          'stamind-checkbox-border': '#DCD8FE50',
-          'stamind-letter-bg': '#9595BD20',
-          unknown: '#7C7CA420',
-          'stamind-icon': '#D8E0FE90',
-          'stamind-button-bg': '#85869833',
-          'stamind-divider': '#52526F40',
-          'stamind-button-issues': '#59597440',
-          'stamin-bg-issue': '#59597440',
-          'stamind-button-hover': '#686B863D',
-          'stamind-file-bg': '#4345632C',
-          'stamind-button-border-hover': '#5E5D7B70',
-          'stamind-bg-sub-issue': '#1314204C',
-          'stamind-sub-hover': '#1B1C2966',
-          'stamind-bg-command': '#1D1E2B7F',
-          'stamind-bg-command-border': '#52526F70',
-          'stamind-tooltip-bg': '#1D1E2B7F',
-          'stamind-bg': '#181921',
-        },
-        decoration: {
-          'stamind-decoration-primary-1': '#4EA7FC',
-          'stamind-decoration-primary-2': '#00B2BF',
-          'stamind-decoration-error-1': '#EB5757',
-          'stamind-decoration-error-2': '#FA6563',
-          'stamind-decoration-warn-1': '#F2C94C',
-          'stamind-decoration-warn-2': '#F2994A',
-          'stamind-decoration-purple': '#BB87FC',
-          'stamind-decoration-block': '#95A2B3',
-          'stamind-decoration-success': '#4CB782',
+        stamind: {
+          white: {
+            '000': '#FFFFFF',
+            '100': '#EEEFFC',
+            '150': '#E0E1EC',
+            '200': '#D2D3E0'
+          },
+          grey: {
+            '200': '#858699',
+            '300': '#4D4F69',
+            '400': '#393A4B',
+            '600': '#272832',
+            '800': '#313248'
+          },
+          black: {
+            '400': '#2C2D3C',
+            '600': '#292A35',
+            '800': '#191A23',
+            '850': '#151621'
+          },
+          'primary-blue': {
+            '200': '#71A5DD',
+            '600': '#37466C',
+            '800': '#2058AF',
+            '900': '#064AB5'
+          },
+          specific: {
+            'background_primary': '#181921',
+            'letter-bg': '#9595BD',
+            'file-bg': '#434563',
+            'issue-bg': '#595974',
+            'text-bg': '#1D1E2B',
+            'sub-issue-bg': '#131420',
+            'button-bg': '#858698',
+            'button-issue-hover-bg': '#5E5D7B',
+            'command-bar-bg': '#1D1E2B',
+            'tooltip-bg': '#202128',
+            'button-hover': '#272832',
+            'sub-issue-hover': '#1B1C29',
+            'command-bar-border': '#52526F',
+            'icon-default': '#D8E0FE',
+            'divider': '#52526F',
+            'checkbox-border': '#DCD8FE'
+          },
+          decoration: {
+            'primary-1': '#4EA7FC',
+            'primary-2': '#00B2BF',
+            'error-1': '#EB5757',
+            'error-2': '#FA6563',
+            'warn-1': '#F2C94C',
+            'warn-2': '#F2994A',
+            'purple': '#BB87FC',
+            'block': '#95A2B3',
+            'success': '#4CB782'
+          }
         },
       },
       keyframes: {
         loginSlideOut: {
           '0%': { transform: 'translateY(0)', opacity: 1 },
-          '100%': { transform: 'translateY(-100%)', opacity: 0 },
+          '100%': { transform: 'translateY(-100%)', opacity: 0 }
         },
         loginSlideUp: {
           '0%': { transform: 'translateY()' },
-          '100%': { transform: 'translateY(-200%)' },
+          '100%': { transform: 'translateY(-200%)' }
         },
         loginSlideIn: {
           '0%': { transform: 'translateY(100%)', opacity: 0 },
-          '100%': { transform: 'translateY(-80%)', opacity: 1 },
+          '100%': { transform: 'translateY(-80%)', opacity: 1 }
         },
         fadeIn: {
           '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
-        },
+          '100%': { opacity: 1 }
+        }
       },
       animation: {
         loginSlideOut: 'loginSlideOut 1s ease forwards',
         loginSlideUp: 'loginSlideUp 1s ease forwards',
         loginSlideIn: 'loginSlideIn 1s ease forwards',
-        fadeIn: 'fadeIn 0.8s ease forwards',
-      },
-    },
+        fadeIn: 'fadeIn 0.8s ease forwards'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 })
