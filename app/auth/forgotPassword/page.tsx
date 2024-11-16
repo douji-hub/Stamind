@@ -12,17 +12,17 @@ const page = () => {
 
   return (
     <div>
-      <div className="relative top-[2rem] text-[3rem] text-center font-bold text-lightgrey-stamind-white">
+      <div className="relative top-[2rem] text-[3rem] text-center font-bold text-stamind-white-000">
         Reset Your Password
       </div>
-      <div className="mt-[8rem] text-[1.125rem] text-center text-lightgrey-stamind-lightgrey-100">
+      <div className="mt-[8rem] text-[1.125rem] text-center text-stamind-white-000">
         We've sent a password reset link to your email.
         <br /> Please check your inbox and follow the instructions to reset your
         password.
       </div>
       <Timer initialTime={300} />
-      <div className="flex flex-col justify-start bg-uiSpecificColor-stamind-bg-command mt-[5rem] w-[40rem] h-[7.5rem]">
-        <div className="px-[0.625rem] py-[0.5rem] text-[0.8125rem] text-lightgrey-stamind-lightgrey-200">
+      <div className="flex flex-col justify-start bg-stamind-specific-text-bg mt-[5rem] w-[40rem] h-[7.5rem]">
+        <div className="px-[0.625rem] py-[0.5rem] text-[0.8125rem] text-stamind-grey-200">
           Didn't receive the email?
           <ul>
             <li className="ml-[1rem] list-disc">
@@ -38,7 +38,7 @@ const page = () => {
           <ButtonComponent
             label={'Resend Password Reset Email'}
             onClick={resendForgotPasswordEmail}
-            customClass={'h-[2.2rem] text-xs bg-grey-stamind-grey-400'}
+            customClass={'h-[2.5rem] text-xs bg-stamind-black-600'}
           />
         </div>
       </div>
