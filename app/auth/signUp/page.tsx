@@ -53,16 +53,14 @@ const Page: React.FC = () => {
 
   return (
     <div className="h-[100%]">
-      <div className="relative top-[4rem] left-0 w-full text-[3rem] text-center font-bold text-lightgrey-stamind-white">
+      <div className="relative top-[4rem] left-0 w-full text-[3rem] text-center font-bold text-stamind-white-000">
         Join and start your journey
       </div>
       <div className="flex flex-col justify-center items-center mt-[8rem] my-10 gap-4">
         <div className={'w-[22rem]'}>
           <GoogleSignInComponent />
         </div>
-        <div className="text-center text-lightgrey-stamind-lightgrey-200">
-          or
-        </div>
+        <div className="text-center text-stamind-white-200">or</div>
         <InputComponent
           label="Your Email"
           placeholder="Enter your email"
@@ -109,7 +107,7 @@ const Page: React.FC = () => {
         <ButtonComponent
           label="Get Started"
           disabled={!isFormValid()}
-          customClass={`h-[2.6rem] mt-2 bg-primary-stamind-blue-1000 ${
+          customClass={`h-[2.6rem] mt-2 bg-stamind-primary-blue-900 ${
             isFormValid() ? 'opacity-100' : 'opacity-60'
           }`}
         />

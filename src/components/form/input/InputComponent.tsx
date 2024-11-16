@@ -72,7 +72,7 @@ const InputComponent = (props: InputFieldProps) => {
 
   return (
     <div className={'flex flex-col ' + boxClass}>
-      <label className="text-[0.85rem] mb-[0.25rem] text-lightgrey-stamind-lightgrey-200">
+      <label className="text-[0.85rem] mb-[0.25rem] text-stamind-grey-200">
         {label}
       </label>
       <div className="relative">
@@ -81,11 +81,11 @@ const InputComponent = (props: InputFieldProps) => {
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className={`w-full h-[3rem] p-[0.5rem] bg-black-stamind-black-850 border focus:border-primary-stamind-blue-800 focus:outline-none rounded-md text-sm text-lightgrey-stamind-lightgrey-100 placeholder-grey-stamind-grey-300
+          className={`w-full h-[3rem] p-[0.5rem] bg-stamind-black-850 border focus:border-stamind-primary-blue-800 focus:outline-none rounded-md text-sm text-stamind-grey-200 placeholder-stamind-grey-300
           ${
             hasError
-              ? 'border-decoration-stamind-decoration-error-1'
-              : 'border-grey-stamind-grey-400'
+              ? 'border-stamind-decoration-error-1'
+              : 'border-stamind-grey-400'
           }`}
         />
         {(type === 'password' || type === 'confirmPassword') && (
@@ -101,14 +101,14 @@ const InputComponent = (props: InputFieldProps) => {
             {errorMessage?.map((message, index) => (
               <li
                 key={index}
-                className="text-[0.7rem] ml-[1rem] list-disc text-grey-stamind-grey-200"
+                className="text-[0.7rem] ml-[1rem] list-disc text-stamind-grey-200"
               >
                 {message}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-[0.7rem] mt-[0.6rem] text-decoration-stamind-decoration-error-1 text-xs">
+          <p className="text-[0.7rem] mt-[0.6rem] text-stamind-decoration-error-1 text-xs">
             {errorMessage}
           </p>
         ))}

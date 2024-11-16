@@ -10,11 +10,7 @@ const TextWithSideLinkComponent = (props: TextWithSideLinkComponentProps) => {
   const { text = '', link = '', linkText = '' } = props
 
   return (
-    <div
-      className={
-        'w-full text-center text-xs text-lightgrey-stamind-lightgrey-200'
-      }
-    >
+    <div className={'w-full text-center text-xs text-stamind-grey-200'}>
       {text}
       <Link href={link} className="mx-1 underline">
         {linkText}

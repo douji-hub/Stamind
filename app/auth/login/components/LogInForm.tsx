@@ -22,9 +22,7 @@ const LogInForm = (props: LogInFormProps) => {
       {/* Email Section */}
       <div className={isRegister ? 'animate-loginSlideOut' : ''}>
         <GoogleSignInComponent />
-        <div className="my-8 text-center text-lightgrey-stamind-lightgrey-200">
-          or
-        </div>
+        <div className="my-8 text-center text-stamind-white-200">or</div>
       </div>
       <div
         className={`flex justify-between items-end w-full gap-x-2 ${
@@ -46,7 +44,7 @@ const LogInForm = (props: LogInFormProps) => {
           <ButtonComponent
             label={'Get Started'}
             onClick={() => setIsRegister(true)}
-            customClass={'h-[3rem] bg-primary-stamind-blue-1000'}
+            customClass={'h-[3rem] bg-stamind-primary-blue-900'}
           />
         </div>
       </div>
@@ -73,7 +71,7 @@ const LogInForm = (props: LogInFormProps) => {
         />
         <ButtonComponent
           label={'Login'}
-          customClass={'h-[3rem] mt-3 bg-primary-stamind-blue-1000'}
+          customClass={'h-[3rem] mt-3 bg-stamind-primary-blue-900'}
         />
       </div>
     </div>

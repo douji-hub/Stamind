@@ -35,7 +35,7 @@ const Page: React.FC = () => {
 
   return (
     <div className="h-[100%]">
-      <div className="relative top-[10rem] left-0 w-full text-[3rem] text-center font-bold text-lightgrey-stamind-white">
+      <div className="relative top-[10rem] left-0 w-full text-[3rem] text-center font-bold text-stamind-white-000">
         Reset Your Password
       </div>
       <div className="flex flex-col justify-center items-center mt-[17rem] gap-4">
@@ -62,7 +62,7 @@ const Page: React.FC = () => {
         />
 
         <button
-          className={`w-[6.8rem] h-[2.6rem] mt-2 mb-6 py-2 px-4 bg-primary-stamind-blue-1000 text-white text-[0.85rem] font-light rounded
+          className={`w-[6.8rem] h-[2.6rem] mt-2 mb-6 py-2 px-4 text-stamind-white-000 bg-primary-stamind-blue-1000 rounded text-[0.85rem] font-light
             ${isFormValid() ? 'opacity-100' : 'opacity-60'}`}
           disabled={!isFormValid()}
         >
