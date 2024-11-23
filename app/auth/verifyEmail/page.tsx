@@ -1,7 +1,13 @@
+'use client'
+
 import React from 'react'
 import Timer from '@/components/timer/Timer'
+import { useSearchParams } from 'next/navigation'
 
 const page = () => {
+  const searchParams = useSearchParams()
+  const email = searchParams.get('email')
+
   return (
     <div>
       <div className="fixed top-[8rem] left-0 w-full text-[3rem] text-center font-bold text-stamind-white-000">
@@ -9,7 +15,7 @@ const page = () => {
       </div>
       <div className="mt-[10rem] text-[0.9375rem] text-center ttext-stamind-white-000">
         A verification email has been sent to{' '}
-        <span className="font-bold">ex***le@gmail.com</span>
+        <span className="font-bold">{email}</span>
         <br /> Please check your email and click the verification link to
         continue.
       </div>

@@ -1,13 +1,17 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from '@/hooks/auth/useForm'
 import InputComponent from '@/components/form/input/InputComponent'
 import GoogleSignInComponent from '@/components/form/button/GoogleSignInComponent'
 import ButtonComponent from '@/components/form/button/ButtonComponent'
 import TextWithSideLinkComponent from '@/components/form/text/TextWithSideLinkComponent'
+import { register } from '@/api/auth'
+import { useRouter } from 'next/navigation'
 
 const Page: React.FC = () => {
+  const router = useRouter()
+
   const {
     formValues,
     setFormValues,
@@ -23,6 +27,9 @@ const Page: React.FC = () => {
   const { setEmail, setFirstName, setPassword, setConfirmPassword } =
     setFormValues
   const { setHasTyped } = typingStatus
+
+  const [loading, setLoading] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -46,6 +53,19 @@ const Page: React.FC = () => {
     setHasTyped((prev) => ({ ...prev, confirmPassword: true }))
   }
 
+  const handleRegister = async () => {
+    setLoading(true)
+    setErrorMessage(null)
+    try {
+      await register(email, password, firstName)
+      await router.push(`/auth/verifyEmail?email=${email}`)
+    } catch (error: unknown) {
+      setErrorMessage(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const emailError = getEmailErrorMessages()
   const usernameError = getUsernameErrorMessages()
   const passwordError = getPasswordErrorMessages()
@@ -59,8 +79,8 @@ const Page: React.FC = () => {
       <div className="flex flex-col justify-center items-center mt-[8rem] my-10 gap-4">
         <div className={'w-[22rem]'}>
           <GoogleSignInComponent />
+          <div className="my-3 text-center text-stamind-white-200">or</div>
         </div>
-        <div className="text-center text-stamind-white-200">or</div>
         <InputComponent
           label="Your Email"
           placeholder="Enter your email"
@@ -105,12 +125,19 @@ const Page: React.FC = () => {
         />
 
         <ButtonComponent
-          label="Get Started"
-          disabled={!isFormValid()}
+          label={loading ? 'Loading...' : 'Get Started'}
+          disabled={!isFormValid() || loading}
+          onClick={handleRegister}
           customClass={`h-[2.6rem] mt-2 bg-stamind-primary-blue-900 ${
             isFormValid() ? 'opacity-100' : 'opacity-60'
           }`}
         />
+
+        {errorMessage && (
+          <div className="text-[0.7rem] mt-[0.6rem] text-stamind-decoration-error-1 text-xs">
+            {errorMessage}
+          </div>
+        )}
       </div>
 
       <TextWithSideLinkComponent
