@@ -40,7 +40,7 @@ const Page = () => {
         <br /> Please check your email and click the verification link to
         continue.
       </div>
-      <Timer key={timerKey} initialTime={5} onTimeout={handleTimeout} />
+      <Timer key={timerKey} initialTime={600} onTimeout={handleTimeout} />
       <div className="flex flex-col justify-start mt-[5rem] w-[42.625rem] bg-stamind-specific-command-bar-bg">
         <div className="px-[0.625rem] py-[0.5rem] text-stamind-white-200 text-[0.6875rem]">
           <span className="font-bold">Didn't receive the email?</span>
