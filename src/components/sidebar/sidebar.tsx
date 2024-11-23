@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import Avatar from '@mui/material/Avatar'
+
+import UserAvatar from './Avatar/UserAvatar.tsx'
 
 const Sidebar = () => {
   //   const [searchValue, setSearchValue] = useState("");
@@ -10,28 +11,28 @@ const Sidebar = () => {
   //   };
 
   return (
-    <div className="w-[14rem] h-screen bg-black-stamind-black-850 flex flex-col justify-between">
+    <div className="w-[14rem] h-screen bg-stamind-black-850 flex flex-col justify-between">
       <div className="px-[1rem]">
         <div className="py-[0.75rem]">
           <div className="flex items-center  justify-between">
-            <div className="flex py-[0.4rem] w-[7.9375rem]">
-              <Avatar alt="User Name" sx={{ width: 18, height: 18 }} />
-              <div className="ms-[0.5rem] text-[0.8rem]">My Workspace</div>
+            <UserAvatar />
+            <div className="flex items-center  justify-center h-[1.75rem] w-[1.75rem] rounded-[0.375rem] hover:bg-[#2C2D3C] transition-all duration-500">
+              <Image
+                src="/images/Sidebar/sidebar.svg"
+                width={14}
+                height={14}
+                alt="sidebar"
+              />
             </div>
-            <Image
-              src="/images/Sidebar/sidebar.svg"
-              width={14}
-              height={14}
-              alt="sidebar"
-            />
           </div>
           <div className="flex items-center  justify-between mt-[0.75rem] ">
             <input
               type="text"
               placeholder="Search..."
-              className="w-[9.5rem] h-[1.3rem] bg-black-stamind-black-850 border border-transparent focus:border-primary-stamind-blue-800 focus:outline-none placeholder:text-[#9E9E9E] placeholder:text-[15px]"
+              className="w-[9.5rem] h-[1.3rem] bg-stamind-black-850 border border-transparent focus:border-primary-stamind-blue-800 focus:outline-none placeholder:text-[#9E9E9E] placeholder:text-[15px] caret-[#2058AF]"
             />
             <Image
+              className=""
               src="/images/Sidebar/search-1.svg"
               width={16}
               height={16}
@@ -43,6 +44,7 @@ const Sidebar = () => {
         <div className="flex items-center justify-between">
           <div className="w-[5.75rem] h-[4.5rem] rounded-[0.25rem] border border-[#666666] flex flex-col justify-center items-center">
             <Image
+              className="mb-[0.625rem]"
               src="/images/Sidebar/note.svg"
               width={16}
               height={16}
@@ -52,6 +54,7 @@ const Sidebar = () => {
           </div>
           <div className="w-[5.75rem] h-[4.5rem] rounded-[0.25rem] border border-[#666666] flex flex-col justify-center items-center">
             <Image
+              className="mb-[0.625rem]"
               src="/images/Sidebar/code.svg"
               width={16}
               height={16}
@@ -61,9 +64,12 @@ const Sidebar = () => {
           </div>
         </div>
         <div className="mt-[1rem]">
-          <div className="flex items-center justify-between px-[0.5rem] py-[0.25rem]">
-            <div className="text-[12px] text-[#9E9E9E] ">Personal</div>
+          <div className="flex items-center justify-between w-[12rem] px-[0.5rem] py-[0.25rem]">
+            <div className="flex items-center h-[1.5rem] w-[10.625rem] px-[0.5rem] text-[12px] text-[#9E9E9E] rounded-[0.375rem] hover:bg-[#2C2D3C] transition-all duration-500">
+              Personal
+            </div>
             <Image
+              className="ms-[0.625rem]"
               src="/images/Sidebar/folder-add.svg"
               width={16}
               height={16}
@@ -77,11 +83,11 @@ const Sidebar = () => {
               </div>
               <div className="text-[#4D4F69]">Note or Code</div>
               <Image
-                src="/images/Sidebar/note.svg"
+                src="/images/Sidebar/edit.svg"
                 className="mx-auto"
                 width={48}
                 height={48}
-                alt="note"
+                alt="edit"
               />
             </div>
           </div>
