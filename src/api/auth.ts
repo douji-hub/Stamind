@@ -28,3 +28,23 @@ export const register = async (email: string, password: string, username: string
         throw new Error('An unexpected error occurred')
     }
 }
+
+/**
+ * Sends a resend mail request to the API.
+ *
+ * @param email - The email address of the user.
+ * @returns A Promise that resolves to the server response data.
+ * @throws An Error with the server's error message if the request fails.
+ */
+export const resendEmail = async (email: string) => {
+    try {
+        await apiClient.post('auth/resendEmail', { email })
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            const errorMessage = error.response?.data?.message || 'Something went wrong'
+            throw new Error(errorMessage)
+        }
+
+        throw new Error('An unexpected error occurred')
+    }
+}
