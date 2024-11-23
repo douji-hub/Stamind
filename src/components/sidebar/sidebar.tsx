@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 
-import UserAvatar from './Avatar/UserAvatar.tsx'
-import Folder from './Folder/Folder.tsx'
+import UserAvatar from './Avatar/UserAvatar'
+import Folder from './Folder/Folder'
 
 const Sidebar = () => {
   //   const [searchValue, setSearchValue] = useState("");
