@@ -1,10 +1,11 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from '@/hooks/auth/useForm'
 import InputComponent from '@/components/form/input/InputComponent'
 import { sendResetPassword } from '@/api/auth'
 import { useRouter } from 'next/navigation'
+import ButtonComponent from '@/components/form/button/ButtonComponent'
 
 const Page: React.FC = () => {
   const router = useRouter()
@@ -13,7 +14,6 @@ const Page: React.FC = () => {
     formValues,
     setFormValues,
     typingStatus,
-    isFormValid,
     getPasswordErrorMessages,
     getConfirmPasswordErrorMessages,
   } = useForm()
@@ -21,6 +21,8 @@ const Page: React.FC = () => {
   const { password, confirmPassword } = formValues
   const { setPassword, setConfirmPassword } = setFormValues
   const { setHasTyped } = typingStatus
+
+  const [loading, setLoading] = useState<boolean>(false)
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value)
@@ -35,14 +37,30 @@ const Page: React.FC = () => {
   }
 
   const handleResetPassword = async () => {
+    setLoading(true)
     try {
       const queryParams = new URLSearchParams(window.location.search)
       const token = queryParams.get('token')
       await sendResetPassword(token, confirmPassword)
       router.push(`/auth/login`)
     } catch (error: unknown) {
-      setErrorMessage(error.message)
+      console.error('Error resetting password:', error.message)
+    } finally {
+      setLoading(false)
     }
+  }
+
+  const isFormValid = () => {
+    const passwordError = getPasswordErrorMessages()
+    const confirmPasswordError = getConfirmPasswordErrorMessages()
+
+    return (
+      password.trim().length > 0 &&
+      confirmPassword.trim().length > 0 &&
+      password === confirmPassword &&
+      !passwordError.hasError &&
+      !confirmPasswordError.hasError
+    )
   }
 
   const passwordError = getPasswordErrorMessages()
@@ -67,7 +85,7 @@ const Page: React.FC = () => {
 
         <InputComponent
           label="Confirm Password"
-          type="confirmPassword"
+          type="password"
           placeholder="Enter your password again"
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
@@ -76,13 +94,14 @@ const Page: React.FC = () => {
           boxClass="w-[22rem]"
         />
 
-        <button
-          className={`w-[6.8rem] h-[2.6rem] mt-2 mb-6 py-2 px-4 text-stamind-white-000 bg-primary-stamind-blue-1000 rounded text-[0.85rem] font-light
-            ${isFormValid() ? 'opacity-100' : 'opacity-60'}`}
+        <ButtonComponent
+          label={loading ? 'Loading...' : 'Get Started'}
+          disabled={!isFormValid() || loading}
           onClick={handleResetPassword}
-        >
-          Get Started
-        </button>
+          customClass={`h-[2.6rem] mt-2 bg-stamind-primary-blue-900 ${
+            isFormValid() ? 'opacity-100' : 'opacity-60'
+          }`}
+        />
       </div>
     </div>
   )
