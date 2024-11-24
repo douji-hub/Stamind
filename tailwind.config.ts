@@ -88,12 +88,22 @@ module.exports = withMT({
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
         },
+        sidebarClose: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        sidebarOpen: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       animation: {
         loginSlideOut: 'loginSlideOut 1s ease forwards',
         loginSlideUp: 'loginSlideUp 1s ease forwards',
         loginSlideIn: 'loginSlideIn 1s ease forwards',
         fadeIn: 'fadeIn 0.8s ease forwards',
+        sidebarClose: 'sidebarClose 0.5s ease forwards',
+        sidebarOpen: 'sidebarOpen 0.5s ease forwards',
       },
     },
   },
