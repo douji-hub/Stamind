@@ -87,24 +87,28 @@ const Sidebar = () => {
             </div>
 
             <div className="flex items-center justify-between px-[1.4rem] pb-[1.4rem]">
-              <Image
-                src="/images/Sidebar/question.svg"
-                width={16}
-                height={16}
-                alt="question"
-              />
+              <div className="flex items-center  justify-center h-[1.75rem] w-[1.75rem] rounded-[0.375rem] hover:bg-[#2C2D3C] transition-all duration-500">
+                <Image
+                  src="/images/Sidebar/question.svg"
+                  width={16}
+                  height={16}
+                  alt="question"
+                />
+              </div>
               <Image
                 src="/images/Sidebar/three-dots.svg"
                 width={16}
                 height={16}
                 alt="three-dots"
               />
-              <Image
-                src="/images/Sidebar/add-space.svg"
-                width={16}
-                height={16}
-                alt="add-space"
-              />
+              <div className="flex items-center  justify-center h-[1.75rem] w-[1.75rem] rounded-[0.375rem] hover:bg-[#2C2D3C] transition-all duration-500">
+                <Image
+                  src="/images/Sidebar/add-space.svg"
+                  width={16}
+                  height={16}
+                  alt="add-space"
+                />
+              </div>
             </div>
           </div>
         )}
