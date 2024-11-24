@@ -36,9 +36,9 @@ export const register = async (email: string, password: string, username: string
  * @returns A Promise that resolves to the server response data.
  * @throws An Error with the server's error message if the request fails.
  */
-export const resendEmail = async (email: string) => {
+export const resendEmail = async (email: string, emailType: string) => {
     try {
-        await apiClient.post('auth/resendEmail', { email })
+        await apiClient.post('auth/resendEmail', { email, emailType })
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
             const errorMessage = error.response?.data?.message || 'Something went wrong'

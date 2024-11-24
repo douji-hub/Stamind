@@ -23,7 +23,7 @@ const Page = () => {
     setIsExpired(false)
     setTimerKey((prev) => prev + 1)
     try {
-      await resendEmail(email)
+      await resendEmail(email, 'verify')
     } catch (error: unknown) {
       console.log(error)
     }
