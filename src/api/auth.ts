@@ -10,23 +10,28 @@ import { AxiosError } from 'axios'
  * @returns A Promise that resolves to the server response data.
  * @throws An Error with the server's error message if the request fails.
  */
-export const register = async (email: string, password: string, username: string) => {
-    try {
-        const response = await apiClient.post('auth/users', {
-            email,
-            password,
-            username,
-        })
+export const register = async (
+  email: string,
+  password: string,
+  username: string,
+) => {
+  try {
+    const response = await apiClient.post('auth/users', {
+      email,
+      password,
+      username,
+    })
 
-        return response.data
-    } catch (error: unknown) {
-        if (error instanceof AxiosError) {
-            const errorMessage = error.response?.data?.message || 'Something went wrong'
-            throw new Error(errorMessage)
-        }
-
-        throw new Error('An unexpected error occurred')
+    return response.data
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const errorMessage =
+        error.response?.data?.message || 'Something went wrong'
+      throw new Error(errorMessage)
     }
+
+    throw new Error('An unexpected error occurred')
+  }
 }
 
 /**
@@ -37,16 +42,17 @@ export const register = async (email: string, password: string, username: string
  * @throws An Error with the server's error message if the request fails.
  */
 export const resendEmail = async (email: string, emailType: string) => {
-    try {
-        await apiClient.post('auth/resend', { email, emailType })
-    } catch (error: unknown) {
-        if (error instanceof AxiosError) {
-            const errorMessage = error.response?.data?.message || 'Something went wrong'
-            throw new Error(errorMessage)
-        }
-
-        throw new Error('An unexpected error occurred')
+  try {
+    await apiClient.post('auth/resend', { email, emailType })
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const errorMessage =
+        error.response?.data?.message || 'Something went wrong'
+      throw new Error(errorMessage)
     }
+
+    throw new Error('An unexpected error occurred')
+  }
 }
 
 /**
@@ -57,16 +63,17 @@ export const resendEmail = async (email: string, emailType: string) => {
  * @throws An Error with the server's error message if the request fails.
  */
 export const sendResetPasswordMail = async (email: string) => {
-    try {
-        await apiClient.post('auth/password-resets', { email })
-    } catch (error: unknown) {
-        if (error instanceof AxiosError) {
-            const errorMessage = error.response?.data?.message || 'Something went wrong'
-            throw new Error(errorMessage)
-        }
-
-        throw new Error('An unexpected error occurred')
+  try {
+    await apiClient.post('auth/password-resets', { email })
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const errorMessage =
+        error.response?.data?.message || 'Something went wrong'
+      throw new Error(errorMessage)
     }
+
+    throw new Error('An unexpected error occurred')
+  }
 }
 
 /**
@@ -78,15 +85,16 @@ export const sendResetPasswordMail = async (email: string) => {
  * @throws An Error with the server's error message if the request fails.
  */
 export const sendResetPassword = async (token: string, newPassword: string) => {
-    try {
-        await apiClient.put('auth/password-resets', { token, newPassword })
-    } catch (error: unknown) {
-        if (error instanceof AxiosError) {
-            const errorMessage = error.response?.data?.message || 'Something went wrong'
-            throw new Error(errorMessage)
-        }
-        throw new Error('An unexpected error occurred')
+  try {
+    await apiClient.put('auth/password-resets', { token, newPassword })
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const errorMessage =
+        error.response?.data?.message || 'Something went wrong'
+      throw new Error(errorMessage)
     }
+    throw new Error('An unexpected error occurred')
+  }
 }
 
 /**
@@ -98,14 +106,15 @@ export const sendResetPassword = async (token: string, newPassword: string) => {
  * @throws An Error with the server's error message if the request fails.
  */
 export const login = async (email: string, password: string) => {
-    try {
-        const response = await apiClient.post('auth/sessions', { email, password })
-        return { token: response.data.token, userId: response.data.userId }
-    } catch (error: unknown) {
-        if (error instanceof AxiosError) {
-            const errorMessage = error.response?.data?.message || 'Something went wrong'
-            throw new Error(errorMessage)
-        }
-        throw new Error('An unexpected error occurred')
+  try {
+    const response = await apiClient.post('auth/sessions', { email, password })
+    return { token: response.data.token, userId: response.data.userId }
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const errorMessage =
+        error.response?.data?.message || 'Something went wrong'
+      throw new Error(errorMessage)
     }
+    throw new Error('An unexpected error occurred')
+  }
 }
