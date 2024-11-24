@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Timer from '@/components/timer/Timer'
 import { resendEmail } from '@/api/auth'
@@ -9,6 +9,14 @@ const page = () => {
   const [isExpired, setIsExpired] = useState<boolean>(false)
   const [isFadingOut, setIsFadingOut] = useState<boolean>(false)
   const [timerKey, setTimerKey] = useState<number>(0)
+  const [email, setEmail] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedEmail = sessionStorage.getItem('email')
+      setEmail(storedEmail)
+    }
+  }, [])
 
   const handleTimeout = () => {
     setIsExpired(true)
@@ -19,7 +27,6 @@ const page = () => {
     setIsFadingOut(true)
     setIsExpired(false)
     setTimerKey((prev) => prev + 1)
-    const email = sessionStorage.getItem('email')
 
     if (!email) return
 
