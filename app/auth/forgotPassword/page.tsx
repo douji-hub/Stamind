@@ -20,6 +20,9 @@ const page = () => {
     setIsExpired(false)
     setTimerKey((prev) => prev + 1)
     const email = sessionStorage.getItem('email')
+
+    if (!email) return
+
     try {
       await resendEmail(email, 'reset')
     } catch (error: unknown) {

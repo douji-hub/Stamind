@@ -37,7 +37,11 @@ const LogInForm = (props: LogInFormProps) => {
       sessionStorage.setItem('jwt', token)
       router.push(`/workspace/${userId}`)
     } catch (error: unknown) {
-      setErrorMessage(error.message)
+      if (error instanceof Error) {
+        setErrorMessage(error.message)
+      } else {
+        setErrorMessage('unknown error')
+      }
     }
   }
 

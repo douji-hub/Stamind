@@ -41,10 +41,14 @@ const Page: React.FC = () => {
     try {
       const queryParams = new URLSearchParams(window.location.search)
       const token = queryParams.get('token')
+      if (!token) return
+
       await sendResetPassword(token, confirmPassword)
       router.push(`/auth/login`)
     } catch (error: unknown) {
-      console.error('Error resetting password:', error.message)
+      if (error instanceof Error) {
+        console.error('Error resetting password:', error.message)
+      }
     } finally {
       setLoading(false)
     }

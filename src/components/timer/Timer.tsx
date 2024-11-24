@@ -12,7 +12,7 @@ const Timer = ({ initialTime, onTimeout }: TimerProps) => {
   const [isTimeOut, setIsTimeOut] = useState<boolean>(false)
   const [showMessage, setShowMessage] = useState<boolean>(true)
 
-  //計時器
+  // 計時器
   const startTimer = () => {
     const timer = setInterval(() => {
       setTimeLeft((prevTime: number) => prevTime - 1)
@@ -20,7 +20,7 @@ const Timer = ({ initialTime, onTimeout }: TimerProps) => {
     return () => clearInterval(timer)
   }
 
-  //處裡倒數結束
+  // 處理倒數結束
   const handleTimeEnd = () => {
     setIsTimeOut(true)
     setTimeout(() => setShowMessage(false), 1000)
@@ -35,10 +35,12 @@ const Timer = ({ initialTime, onTimeout }: TimerProps) => {
   }, [timeLeft])
 
   useEffect(() => {
-    if (isTimeOut) onTimeout()
-  }, [isTimeOut])
+    if (isTimeOut && onTimeout) {
+      onTimeout()
+    }
+  }, [isTimeOut, onTimeout])
 
-  //轉換時間
+  // 轉換時間
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60)
     const seconds = time % 60

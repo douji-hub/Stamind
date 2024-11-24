@@ -22,6 +22,9 @@ const Page = () => {
     setIsFadingOut(true)
     setIsExpired(false)
     setTimerKey((prev) => prev + 1)
+
+    if (!email) return
+
     try {
       await resendEmail(email, 'verify')
     } catch (error: unknown) {

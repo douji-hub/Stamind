@@ -4,7 +4,7 @@ type TextWithSideLinkComponentProps = {
   text: string
   link: string
   linkText: string
-  handleResetPasswordMail: () => void
+  handleResetPasswordMail?: () => void
 }
 
 const TextWithSideLinkComponent = (props: TextWithSideLinkComponentProps) => {
