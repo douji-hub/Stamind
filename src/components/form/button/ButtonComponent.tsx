@@ -5,7 +5,7 @@ import { Button } from '@material-tailwind/react'
 type ButtonComponentProps = {
   label: string
   variant?: 'filled' | 'gradient' | 'outlined' | 'text'
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  onClick?: () => void
   disabled?: boolean
   customClass?: string
 }

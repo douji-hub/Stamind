@@ -89,3 +89,24 @@ export const sendResetPassword = async (token: string, newPassword: string) => {
         throw new Error('An unexpected error occurred')
     }
 }
+
+/**
+ * login request to the API.
+ *
+ * @param email - user email
+ * @param password - user password
+ * @returns JWT token that success login to the server response.
+ * @throws An Error with the server's error message if the request fails.
+ */
+export const login = async (email: string, password: string) => {
+    try {
+        const response = await apiClient.post('auth/login', { email, password })
+        return { token: response.data.token, userId: response.data.userId }
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            const errorMessage = error.response?.data?.message || 'Something went wrong'
+            throw new Error(errorMessage)
+        }
+        throw new Error('An unexpected error occurred')
+    }
+}

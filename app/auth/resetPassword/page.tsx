@@ -39,7 +39,7 @@ const Page: React.FC = () => {
       const queryParams = new URLSearchParams(window.location.search)
       const token = queryParams.get('token')
       await sendResetPassword(token, confirmPassword)
-      await router.push(`/auth/login`)
+      router.push(`/auth/login`)
     } catch (error: unknown) {
       setErrorMessage(error.message)
     }

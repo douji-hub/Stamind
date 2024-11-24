@@ -58,7 +58,7 @@ const Page: React.FC = () => {
     setErrorMessage(null)
     try {
       await register(email, password, firstName)
-      await router.push(`/auth/verifyEmail?email=${email}`)
+      router.push(`/auth/verifyEmail?email=${email}`)
     } catch (error: unknown) {
       setErrorMessage(error.message)
     } finally {
