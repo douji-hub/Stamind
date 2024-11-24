@@ -12,7 +12,7 @@ import { AxiosError } from 'axios'
  */
 export const register = async (email: string, password: string, username: string) => {
     try {
-        const response = await apiClient.post('/auth/register', {
+        const response = await apiClient.post('auth/users', {
             email,
             password,
             username,
@@ -38,7 +38,7 @@ export const register = async (email: string, password: string, username: string
  */
 export const resendEmail = async (email: string, emailType: string) => {
     try {
-        await apiClient.post('auth/resendEmail', { email, emailType })
+        await apiClient.post('auth/resend', { email, emailType })
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
             const errorMessage = error.response?.data?.message || 'Something went wrong'
@@ -58,7 +58,7 @@ export const resendEmail = async (email: string, emailType: string) => {
  */
 export const sendResetPasswordMail = async (email: string) => {
     try {
-        await apiClient.post('auth/forgotPassword', { email })
+        await apiClient.post('auth/password-resets', { email })
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
             const errorMessage = error.response?.data?.message || 'Something went wrong'
@@ -78,9 +78,8 @@ export const sendResetPasswordMail = async (email: string) => {
  * @throws An Error with the server's error message if the request fails.
  */
 export const sendResetPassword = async (token: string, newPassword: string) => {
-    console.log(token)
     try {
-        await apiClient.post('auth/resetPassword', { token, newPassword })
+        await apiClient.put('auth/password-resets', { token, newPassword })
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
             const errorMessage = error.response?.data?.message || 'Something went wrong'
@@ -100,7 +99,7 @@ export const sendResetPassword = async (token: string, newPassword: string) => {
  */
 export const login = async (email: string, password: string) => {
     try {
-        const response = await apiClient.post('auth/login', { email, password })
+        const response = await apiClient.post('auth/sessions', { email, password })
         return { token: response.data.token, userId: response.data.userId }
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
