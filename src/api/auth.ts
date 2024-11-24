@@ -48,3 +48,44 @@ export const resendEmail = async (email: string) => {
         throw new Error('An unexpected error occurred')
     }
 }
+
+/**
+ * Sends a forget password mail request to the API.
+ *
+ * @param email - The email address of the user.
+ * @returns A Promise that resolves to the server response data.
+ * @throws An Error with the server's error message if the request fails.
+ */
+export const sendResetPasswordMail = async (email: string) => {
+    try {
+        await apiClient.post('auth/forgotPassword', { email })
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            const errorMessage = error.response?.data?.message || 'Something went wrong'
+            throw new Error(errorMessage)
+        }
+
+        throw new Error('An unexpected error occurred')
+    }
+}
+
+/**
+ * reset password request to the API.
+ *
+ * @param token - reset password token
+ * @param newPassword - The new Password of the user.
+ * @returns A Promise that resolves to the server response data.
+ * @throws An Error with the server's error message if the request fails.
+ */
+export const sendResetPassword = async (token: string, newPassword: string) => {
+    console.log(token)
+    try {
+        await apiClient.post('auth/resetPassword', { token, newPassword })
+    } catch (error: unknown) {
+        if (error instanceof AxiosError) {
+            const errorMessage = error.response?.data?.message || 'Something went wrong'
+            throw new Error(errorMessage)
+        }
+        throw new Error('An unexpected error occurred')
+    }
+}

@@ -5,9 +5,19 @@ import Image from 'next/image'
 
 import LogInForm from './components/LogInForm'
 import TextWithSideLinkComponent from '@/components/form/text/TextWithSideLinkComponent'
+import { sendResetPasswordMail } from '@/api/auth'
 
 const page = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false)
+
+  const handleResetPasswordMail = async () => {
+    const email = sessionStorage.getItem('email')
+    try {
+      await sendResetPasswordMail(email)
+    } catch (error: unknown) {
+      setErrorMessage(error.message)
+    }
+  }
 
   return (
     <div>
@@ -40,6 +50,7 @@ const page = () => {
               text={'forgot password?'}
               link={'/auth/forgotPassword'}
               linkText={'Click Here'}
+              handleResetPasswordMail={handleResetPasswordMail}
             />
           </div>
         )}

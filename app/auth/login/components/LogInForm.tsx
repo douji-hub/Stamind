@@ -17,6 +17,15 @@ const LogInForm = (props: LogInFormProps) => {
   const [inputEmail, setInputEmail] = useState<string>('')
   const [inputPassword, setInputPassword] = useState<string>('')
 
+  const isEmailValid = inputEmail.trim().length > 0
+
+  const handleGetStarted = () => {
+    if (isEmailValid) {
+      sessionStorage.setItem('email', inputEmail)
+      setIsRegister(true)
+    }
+  }
+
   return (
     <div className="relative mt-[7.75rem] mx-auto w-[22rem]">
       {/* Email Section */}
@@ -43,14 +52,15 @@ const LogInForm = (props: LogInFormProps) => {
         <div className={isRegister ? 'hidden' : ''}>
           <ButtonComponent
             label={'Get Started'}
-            onClick={() => setIsRegister(true)}
-            customClass={'h-[3rem] bg-stamind-primary-blue-900'}
+            onClick={handleGetStarted}
+            customClass={`h-[3rem] ${
+              isEmailValid
+                ? 'bg-stamind-primary-blue-900'
+                : 'bg-gray-400 cursor-not-allowed'
+            }`}
+            disabled={!isEmailValid}
           />
         </div>
-      </div>
-      <div>
-        {/*{inputEmail.length == 0 &&*/}
-        {/*    <span className={"text-decoration-stamind-decoration-error-1 text-xs"}>Can't be empty</span>}*/}
       </div>
 
       {/* Password Section */}

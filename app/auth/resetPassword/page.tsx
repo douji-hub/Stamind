@@ -3,8 +3,12 @@
 import React from 'react'
 import { useForm } from '@/hooks/auth/useForm'
 import InputComponent from '@/components/form/input/InputComponent'
+import { sendResetPassword } from '@/api/auth'
+import { useRouter } from 'next/navigation'
 
 const Page: React.FC = () => {
+  const router = useRouter()
+
   const {
     formValues,
     setFormValues,
@@ -28,6 +32,17 @@ const Page: React.FC = () => {
   ) => {
     setConfirmPassword(e.target.value)
     setHasTyped((prev) => ({ ...prev, confirmPassword: true }))
+  }
+
+  const handleResetPassword = async () => {
+    try {
+      const queryParams = new URLSearchParams(window.location.search)
+      const token = queryParams.get('token')
+      await sendResetPassword(token, confirmPassword)
+      await router.push(`/auth/login`)
+    } catch (error: unknown) {
+      setErrorMessage(error.message)
+    }
   }
 
   const passwordError = getPasswordErrorMessages()
@@ -64,7 +79,7 @@ const Page: React.FC = () => {
         <button
           className={`w-[6.8rem] h-[2.6rem] mt-2 mb-6 py-2 px-4 text-stamind-white-000 bg-primary-stamind-blue-1000 rounded text-[0.85rem] font-light
             ${isFormValid() ? 'opacity-100' : 'opacity-60'}`}
-          disabled={!isFormValid()}
+          onClick={handleResetPassword}
         >
           Get Started
         </button>
