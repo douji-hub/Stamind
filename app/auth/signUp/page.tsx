@@ -54,12 +54,14 @@ const Page: React.FC = () => {
   }
 
   const handleRegister = async () => {
+    sessionStorage.setItem('email', email)
+
     setLoading(true)
     setErrorMessage(null)
 
     try {
       await register(email, password, firstName)
-      router.push(`/auth/verifyEmail?email=${email}`)
+      router.push(`/auth/verifyEmail`)
     } catch (error: unknown) {
       if (error instanceof Error) {
         setErrorMessage(error.message)

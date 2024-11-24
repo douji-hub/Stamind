@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import Timer from '@/components/timer/Timer'
-import { useSearchParams } from 'next/navigation'
 import { resendEmail } from '@/api/auth'
 
 const Page = () => {
@@ -10,8 +9,9 @@ const Page = () => {
   const [isFadingOut, setIsFadingOut] = useState<boolean>(false)
   const [timerKey, setTimerKey] = useState<number>(0)
 
-  const searchParams = useSearchParams()
-  const email = searchParams.get('email')
+  const email = sessionStorage.getItem('email')
+
+  if (!email) return
 
   const handleTimeout = () => {
     setIsExpired(true)
