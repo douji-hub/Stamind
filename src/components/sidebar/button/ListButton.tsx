@@ -6,7 +6,7 @@ import Image from 'next/image'
 const ListButton = () => {
   const [ListState, setListState] = useState<boolean>(false)
 
-  const list = [
+  const list: Array<{ image: string; name: string }> = [
     {
       image: '/images/Sidebar/Duplicate.svg',
       name: 'Rename',
@@ -52,7 +52,7 @@ const ListButton = () => {
       <div
         className={`absolute top-[50%] left-[50%]  w-[8rem] h-[14.5rem] bg-stamind-grey-400 rounded-[0.5rem] transition-opacity duration-300 ${ListState ? 'opacity-100' : 'opacity-0 '} `}
       >
-        {list.map((item, index) => (
+        {list.map((item: { image: string; name: string }, index: number) => (
           <>
             <div
               key={index}
