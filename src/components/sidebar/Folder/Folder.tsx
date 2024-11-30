@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-
 import Image from 'next/image'
+
+import ListButton from '../button/ListButton'
 
 interface Folder {
   id: number
@@ -35,8 +36,8 @@ const Folder = () => {
           onClick={addFolder}
         ></Image>
       </div>
-      {folderList.map(() => (
-        <div className="flex items-center group">
+      {folderList.map((folderList: Folder) => (
+        <div key={folderList.id} className="flex items-center group">
           <div className=" flex items-center justify-center h-[1.5rem] w-[1.5rem] ms-[-1rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <Image
               className=""
@@ -69,16 +70,7 @@ const Folder = () => {
                 onClick={addFolder}
               ></Image>
             </div>
-            <div className="flex items-center justify-center h-[1.5rem] w-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <Image
-                className=""
-                src="/images/Sidebar/add-space.svg"
-                width={7}
-                height={6}
-                alt="folder"
-                onClick={addFolder}
-              ></Image>
-            </div>
+            <ListButton />
           </div>
         </div>
       ))}
