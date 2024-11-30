@@ -90,7 +90,7 @@ module.exports = withMT({
         },
         sidebarClose: {
           '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(-150%)' },
         },
         sidebarOpen: {
           '0%': { transform: 'translateX(-100%)' },
