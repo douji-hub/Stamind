@@ -1,13 +1,40 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Timer from '@/components/timer/Timer'
-import ButtonComponent from '@/components/form/button/ButtonComponent'
+import { resendEmail } from '@/api/auth'
 
 const page = () => {
-  function resendForgotPasswordEmail() {
-    alert('resend!')
+  const [isExpired, setIsExpired] = useState<boolean>(false)
+  const [isFadingOut, setIsFadingOut] = useState<boolean>(false)
+  const [timerKey, setTimerKey] = useState<number>(0)
+  const [email, setEmail] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedEmail = sessionStorage.getItem('email')
+      setEmail(storedEmail)
+    }
+  }, [])
+
+  const handleTimeout = () => {
+    setIsExpired(true)
+    setIsFadingOut(false)
+  }
+
+  const handleResendClick = async () => {
+    setIsFadingOut(true)
+    setIsExpired(false)
+    setTimerKey((prev) => prev + 1)
+
+    if (!email) return
+
+    try {
+      await resendEmail(email, 'reset')
+    } catch (error: unknown) {
+      console.log(error)
+    }
   }
 
   return (
@@ -20,7 +47,7 @@ const page = () => {
         <br /> Please check your inbox and follow the instructions to reset your
         password.
       </div>
-      <Timer initialTime={300} />
+      <Timer key={timerKey} initialTime={600} onTimeout={handleTimeout} />
       <div className="flex flex-col justify-start bg-stamind-specific-text-bg mt-[5rem] w-[40rem] h-[7.5rem]">
         <div className="px-[0.625rem] py-[0.5rem] text-[0.8125rem] text-stamind-grey-200">
           Didn't receive the email?
@@ -35,11 +62,15 @@ const page = () => {
           </ul>
         </div>
         <div className="flex justify-center items-center flex-1">
-          <ButtonComponent
-            label={'Resend Password Reset Email'}
-            onClick={resendForgotPasswordEmail}
-            customClass={'h-[2.5rem] text-xs bg-stamind-black-600'}
-          />
+          <button
+            className={`h-[1.8rem] w-[12rem] bg-stamind-black-600 border border-stamind-grey-400 text-[0.7rem] rounded text-stamind-white-200 transition-opacity duration-500 ${
+              isFadingOut ? 'opacity-0' : isExpired ? 'opacity-100' : ''
+            }`}
+            onClick={handleResendClick}
+            disabled={isFadingOut}
+          >
+            Resend Password Reset Email
+          </button>
         </div>
       </div>
     </div>

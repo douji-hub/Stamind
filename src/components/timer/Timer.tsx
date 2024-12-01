@@ -4,14 +4,15 @@ import { useState, useEffect } from 'react'
 
 type TimerProps = {
   initialTime: number
+  onTimeout?: () => void
 }
 
-const Timer = ({ initialTime }: TimerProps) => {
+const Timer = ({ initialTime, onTimeout }: TimerProps) => {
   const [timeLeft, setTimeLeft] = useState<number>(initialTime)
-  const [isRegister, setIsRegister] = useState<boolean>(false)
+  const [isTimeOut, setIsTimeOut] = useState<boolean>(false)
   const [showMessage, setShowMessage] = useState<boolean>(true)
 
-  //計時器
+  // 計時器
   const startTimer = () => {
     const timer = setInterval(() => {
       setTimeLeft((prevTime: number) => prevTime - 1)
@@ -19,9 +20,9 @@ const Timer = ({ initialTime }: TimerProps) => {
     return () => clearInterval(timer)
   }
 
-  //處裡倒數結束
+  // 處理倒數結束
   const handleTimeEnd = () => {
-    setIsRegister(true)
+    setIsTimeOut(true)
     setTimeout(() => setShowMessage(false), 1000)
   }
 
@@ -33,7 +34,13 @@ const Timer = ({ initialTime }: TimerProps) => {
     }
   }, [timeLeft])
 
-  //轉換時間
+  useEffect(() => {
+    if (isTimeOut && onTimeout) {
+      onTimeout()
+    }
+  }, [isTimeOut, onTimeout])
+
+  // 轉換時間
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60)
     const seconds = time % 60
@@ -47,7 +54,7 @@ const Timer = ({ initialTime }: TimerProps) => {
     <div className="w-full">
       <div
         className={`mt-[2.8rem] mb-[0.7rem] text-center text-[4rem] transition-colors duration-500 ease-in-out ${
-          isRegister ? 'text-stamind-black-400' : 'text-stamind-white-000'
+          isTimeOut ? 'text-stamind-black-400' : 'text-stamind-white-000'
         }`}
       >
         {formatTime(timeLeft)}
@@ -57,7 +64,7 @@ const Timer = ({ initialTime }: TimerProps) => {
         {showMessage && (
           <div
             className={`inset-0 transition-opacity duration-1000 ease-in-out ${
-              isRegister ? 'opacity-0' : 'opacity-100'
+              isTimeOut ? 'opacity-0' : 'opacity-100'
             }`}
           >
             <div className="text-[0.9375rem] text-center text-stamind-white-000">
@@ -68,7 +75,7 @@ const Timer = ({ initialTime }: TimerProps) => {
 
         <div
           className={`inset-0 transition-opacity delay-1000 duration-1000 ease-in-out ${
-            isRegister ? 'opacity-100' : 'opacity-0'
+            isTimeOut ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <div className="text-[0.9375rem] text-center text-stamind-white-000">
